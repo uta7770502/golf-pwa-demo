@@ -3,27 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>公式ルールを即答するAIキャディ</title>
+  <title>ゴルフルールAIキャディ</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="rules.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>公式ルールを即答するAIキャディ</h1>
-    <p>ルールを確認しながらスイスイラウンド</p>
+  <header>
+    <h1>ゴルフルールAIキャディ</h1>
+  </header>
 
-    <a href="rules.html" class="top-button">ルール一覧(最新2025ver)</a>
-    <input type="text" id="searchBox" placeholder="ルールを検索…">
+  <main>
+    <button class="main-btn" onclick="location.href='rules.html'">ルール一覧 (最新2025ver)</button>
 
-    <h2>🌟 よく見るルール</h2>
-    <button class="rule-btn">バンカーでクラブを砂につけていい？</button>
-    <button class="rule-btn">旗を抜いていい？</button>
+    <input type="text" id="searchBox" placeholder="ルールを検索..." oninput="showSuggestions()">
+    <ul id="suggestions"></ul>
 
-    <h2>🌱 場所でさがす</h2>
-    <button class="rule-btn">OB</button>
-    <button class="rule-btn">フェアウェイ</button>
-    <button class="rule-btn">ラフ</button>
-    <button class="rule-btn">グリーン</button>
-    <button class="rule-btn">ウォーターハザード</button>
-  </div>
+    <h2>よく見るルール</h2>
+    <div class="button-grid">
+      <button class="rule-btn">OB処置</button>
+      <button class="rule-btn">バンカー</button>
+      <button class="rule-btn">ティーショット</button>
+    </div>
+
+    <h2>場所で探す</h2>
+    <div class="button-grid">
+      <button class="rule-btn"><img src="icons/tee.png"><br>ティーグラウンド</button>
+      <button class="rule-btn"><img src="icons/bunker.png"><br>バンカー</button>
+      <button class="rule-btn"><img src="icons/green.png"><br>グリーン</button>
+      <button class="rule-btn"><img src="icons/rough.png"><br>ラフ</button>
+      <button class="rule-btn"><img src="icons/ob.png"><br>OB</button>
+      <button class="rule-btn"><img src="icons/penalty.png"><br>ペナルティエリア</button>
+    </div>
+  </main>
 </body>
 </html>

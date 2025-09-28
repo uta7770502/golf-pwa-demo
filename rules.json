@@ -1,1 +1,122 @@
-{"rules":[{"id":1,"title":"バンカーでクラブを砂につけていい？","category":"バンカー"}]}
+[
+  {
+    "title": "ティーショットの位置",
+    "category": "ティー",
+    "summary": "ティーマーカー内で打つ",
+    "icon": "tee.png"
+  },
+  {
+    "title": "OB処置",
+    "category": "OB",
+    "summary": "2打罰で戻る",
+    "icon": "ob.png"
+  },
+  {
+    "title": "バンカーで砂を触る",
+    "category": "バンカー",
+    "summary": "アドレス前は不可",
+    "icon": "bunker.png"
+  },
+  {
+    "title": "バンカーの足跡",
+    "category": "バンカー",
+    "summary": "ショット後は均す",
+    "icon": "bunker.png"
+  },
+  {
+    "title": "グリーン上のライン修復",
+    "category": "グリーン",
+    "summary": "ボールマーク修復OK",
+    "icon": "green.png"
+  },
+  {
+    "title": "グリーン上の旗竿",
+    "category": "グリーン",
+    "summary": "抜かなくても良い",
+    "icon": "green.png"
+  },
+  {
+    "title": "ラフでのソール",
+    "category": "ラフ",
+    "summary": "軽く接触OK",
+    "icon": "rough.png"
+  },
+  {
+    "title": "ペナルティエリア救済",
+    "category": "ペナルティ",
+    "summary": "1打罰でドロップ",
+    "icon": "penalty.png"
+  },
+  {
+    "title": "ルール9",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール10",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール11",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール12",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール13",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール14",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール15",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール16",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール17",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール18",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール19",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  },
+  {
+    "title": "ルール20",
+    "category": "その他",
+    "summary": "サンプル解説",
+    "icon": "tee.png"
+  }
+]
