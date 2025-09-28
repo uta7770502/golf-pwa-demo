@@ -3,41 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゴルフルール検索</title>
-  <link rel="stylesheet" href="style.css?v=7">
+  <title>公式ルールを即答するAIキャディ</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <h1>公式ルールを即答するAIキャディ</h1>
   <p>ルールを確認しながらスイスイラウンド</p>
-  <input type="text" placeholder="ルールを検索…" class="search-box">
 
-  <section>
-    <h2>🌟 よく見るルール</h2>
-    <button class="rule-btn">バンカーでクラブを砂につけていい？</button>
-    <button class="rule-btn">旗を抜いていい？</button>
-  </section>
+  <a href="rules.html" class="button-link yellow-button">ルール一覧(最新2025ver)</a>
 
-  <section>
-    <h2>🌱 場所でさがす</h2>
-    <div class="grid">
-      <button class="rule-btn">OB</button>
-      <button class="rule-btn">フェアウェイ</button>
-      <button class="rule-btn">ラフ</button>
-      <button class="rule-btn">グリーン</button>
-      <button class="rule-btn">ウォーターハザード</button>
-    </div>
-  </section>
+  <input type="text" id="searchBox" placeholder="ルールを検索...">
+  <div id="suggestions"></div>
 
-  <section>
-    <h2>📁 種類から探す</h2>
-    <div class="grid">
-      <button class="rule-btn yellow">OB</button>
-      <button class="rule-btn yellow">ペナルティ</button>
-      <button class="rule-btn yellow">プレー順</button>
-      <button class="rule-btn yellow">道具のルール</button>
-    </div>
-  </section>
+  <h2>🌟 よく見るルール</h2>
+  <a href="detail.html?id=1" class="button-link green-button">バンカーでクラブを砂につけていい？</a>
+  <a href="detail.html?id=2" class="button-link green-button">旗を抜いていい？</a>
 
-  <script src="script.js?v=7"></script>
+  <h2>🌱 場所でさがす</h2>
+  <a href="detail.html?id=3" class="button-link green-button">OB</a>
+  <a href="detail.html?id=4" class="button-link green-button">フェアウェイ</a>
+  <a href="detail.html?id=5" class="button-link green-button">ラフ</a>
+  <a href="detail.html?id=6" class="button-link green-button">グリーン</a>
+  <a href="detail.html?id=7" class="button-link green-button">ウォーターハザード</a>
+
+  <h2>📁 種類から探す</h2>
+  <a href="detail.html?id=8" class="button-link yellow-button">OB</a>
+  <a href="detail.html?id=9" class="button-link yellow-button">ペナルティ</a>
+  <a href="detail.html?id=10" class="button-link yellow-button">プレー順</a>
+  <a href="detail.html?id=11" class="button-link yellow-button">道具のルール</a>
 </body>
 </html>

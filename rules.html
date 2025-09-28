@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ルール一覧</title></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ルール一覧</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
 <body>
-<h2>バンカーのルール</h2>
-<ul>
-  <li><a href="detail.html?q=sand-touch">砂を触っていい？</a></li>
-  <li><a href="detail.html?q=footprint">足跡をならせる？</a></li>
-</ul>
+  <h1>ルール一覧 (最新2025ver)</h1>
+  <input type="text" id="searchBoxRules" placeholder="ルールを検索...">
+  <div id="suggestionsRules"></div>
+  <ul id="rulesList"></ul>
+  <a href="index.html" class="button-link yellow-button">← トップへ戻る</a>
 </body>
 </html>
