@@ -3,42 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゴルフルール検索</title>
+  <title>ゴルフルールAIキャディ</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="rules.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>ゴルフルール検索</h1>
-  </header>
+  <h1>公式ルールを即答するAIキャディ</h1>
+  <p>ルールを確認しながらスイスイラウンド</p>
 
-  <main>
-    <!-- ルール一覧ボタン -->
-    <button class="main-btn" onclick="location.href='rules.html'">ルール一覧 (最新2025ver)</button>
+  <button class="main-button" onclick="location.href='rules.html'">ルール一覧 (最新2025ver)</button>
 
-    <!-- 検索ボックス -->
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="ルールを検索...">
-      <ul id="suggestions"></ul>
+  <input type="text" id="searchBox" placeholder="ルールを検索..." oninput="searchRules(this.value)">
+
+  <section>
+    <h2>🌟 よく見るルール</h2>
+    <div class="button-container">
+      <button class="rule-button">バンカーでクラブを砂につけていい？</button>
+      <button class="rule-button">旗を抜いていい？</button>
     </div>
+  </section>
 
-    <h2>よく見るルール</h2>
-    <div class="button-grid">
-      <button class="rule-btn">OB</button>
-      <button class="rule-btn">バンカー</button>
-      <button class="rule-btn">グリーン</button>
+  <section>
+    <h2>🌱 場所でさがす</h2>
+    <div class="button-container">
+      <button class="rule-button">OB</button>
+      <button class="rule-button">フェアウェイ</button>
+      <button class="rule-button">ラフ</button>
+      <button class="rule-button">グリーン</button>
+      <button class="rule-button">ウォーターハザード</button>
     </div>
-
-    <h2>カテゴリから探す</h2>
-    <div class="button-grid">
-      <button class="rule-btn">ティーグラウンド</button>
-      <button class="rule-btn">フェアウェイ</button>
-      <button class="rule-btn">バンカー</button>
-      <button class="rule-btn">グリーン</button>
-      <button class="rule-btn">ペナルティエリア</button>
-      <button class="rule-btn">アンプレアブル</button>
-      <button class="rule-btn">その他</button>
-    </div>
-  </main>
+  </section>
 </body>
 </html>

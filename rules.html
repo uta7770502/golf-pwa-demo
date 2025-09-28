@@ -3,22 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ルール一覧</title>
+  <title>ルール一覧 (最新2025ver)</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="rules.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>ルール一覧 (最新2025ver)</h1>
-  </header>
+  <h1>ルール一覧 (最新2025ver)</h1>
+  <input type="text" id="searchBoxRules" placeholder="ルールを検索..." oninput="searchRules(this.value)">
 
-  <main>
-    <div class="search-box">
-      <input type="text" id="searchRules" placeholder="ルールを検索...">
-      <ul id="ruleSuggestions"></ul>
-    </div>
-
-    <div id="rulesContainer"></div>
-  </main>
+  <div id="rulesContainer"></div>
 </body>
 </html>
