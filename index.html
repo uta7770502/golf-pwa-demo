@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIキャディ - ゴルフルール検索</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>公式ルールを即答するAIキャディ</h1>
+    <p>ルールを確認しながらスイスイラウンド</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>⭐ よく見るルール</h2>
+      <div class="rule-card yellow"><span>バンカーでクラブを砂につけていい？</span></div>
+      <div class="rule-card yellow"><span>旗を抜いていい？</span></div>
+    </section>
+
+    <section>
+      <h2>🌱 場所から探す</h2>
+      <div class="rule-card green"><img src="icons/tee.png" class="icon"><span>ティー</span></div>
+      <div class="rule-card green"><img src="icons/fairway.png" class="icon"><span>フェアウェイ</span></div>
+      <div class="rule-card green"><img src="icons/rough.png" class="icon"><span>ラフ</span></div>
+      <div class="rule-card green"><img src="icons/green.png" class="icon"><span>グリーン</span></div>
+      <div class="rule-card green"><img src="icons/water.png" class="icon"><span>ウォーターハザード</span></div>
+    </section>
+
+    <section>
+      <h2>📑 種類から探す</h2>
+      <div class="rule-card yellow"><img src="icons/ob.png" class="icon"><span>OB</span></div>
+      <div class="rule-card yellow"><img src="icons/penalty.png" class="icon"><span>ペナルティ</span></div>
+      <div class="rule-card yellow"><img src="icons/playorder.png" class="icon"><span>プレー順</span></div>
+      <div class="rule-card yellow"><img src="icons/club.png" class="icon"><span>道具のルール</span></div>
+    </section>
+  </main>
+</body>
+</html>
