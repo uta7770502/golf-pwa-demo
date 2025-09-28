@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+p {
+  margin-top: 0;
+  color: #555;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+/* 共通ボタン */
+.button {
+  display: block;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+
+/* よく見るルール（縦並び） */
+.section > .button {
+  width: 90%;
+}
+
+/* グリッド形式（キーワード・種類から探す） */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.green-button {
+  background-color: #e6f8e6;
+}
+
+.yellow-button {
+  background-color: #fff4cc;
+}
