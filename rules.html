@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ルール一覧</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script defer src="rules.js"></script>
 </head>
 <body>
-  <h1>ルール一覧（最新2025ver）</h1>
-  <input type="text" id="ruleSearch" placeholder="ルールを検索…">
+  <header>
+    <h1>ルール一覧 (最新2025ver)</h1>
+  </header>
 
-  <ul id="rulesList">
-    <li><button class="btn-rule">バンカーでクラブを砂につけていい？</button></li>
-    <li><button class="btn-rule">旗を抜いていい？</button></li>
-    <li><button class="btn-rule">OBになったときの処置</button></li>
-    <li><button class="btn-rule">ウォーターハザードでの処置</button></li>
-    <li><button class="btn-rule">ラフでのプレー方法</button></li>
-    <li><button class="btn-rule">グリーン上のマナー</button></li>
-    <li><button class="btn-rule">ティーグラウンドでの順番</button></li>
-    <li><button class="btn-rule">ペナルティ杭（赤・黄）の違い</button></li>
-  </ul>
+  <main>
+    <div class="search-box">
+      <input type="text" id="searchRules" placeholder="ルールを検索...">
+      <ul id="ruleSuggestions"></ul>
+    </div>
+
+    <div id="rulesContainer"></div>
+  </main>
 </body>
 </html>
