@@ -2,94 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIキャディ</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 20px;
-      color: #000;
-    }
-
-    h1 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 18px;
-      margin: 20px 0 10px;
-    }
-
-    /* 共通バナー */
-    .banner {
-      display: flex;
-      align-items: center;
-      padding: 12px;
-      margin: 6px 0;
-      border-radius: 8px;
-      font-size: 16px;
-      text-decoration: none;
-      color: #000;
-      font-weight: bold;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    .banner img {
-      width: 28px;
-      height: 28px;
-      margin-right: 10px;
-    }
-
-    .green {
-      background-color: #e8fbe8; /* 薄い緑 */
-    }
-
-    .yellow {
-      background-color: #fff7e0; /* 薄い黄色 */
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-  </style>
+  <title>ゴルフルール検索</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <h1>公式ルールを即答するAIキャディ</h1>
-  <p>ルールを確認しながらスイスイラウンド</p>
-
-  <!-- よく見るルール -->
-  <section>
-    <h2>🌟 よく見るルール</h2>
-    <a href="#" class="banner green">バンカーでクラブを砂につけていい？</a>
-    <a href="#" class="banner green">旗を抜いていい？</a>
-  </section>
-
-  <!-- 振度のキーワード -->
-  <section>
-    <h2>🌱 振度のキーワード</h2>
-    <div class="grid">
-      <a href="#" class="banner green"><img src="ob.png" alt="OB">OB</a>
-      <a href="#" class="banner green"><img src="fairway.png" alt="フェアウェイ">フェアウェイ</a>
-      <a href="#" class="banner green"><img src="rough.png" alt="ラフ">ラフ</a>
-      <a href="#" class="banner green"><img src="green.png" alt="グリーン">グリーン</a>
-      <a href="#" class="banner green"><img src="penalty.png" alt="ウォーターハザード">ウォーターハザード</a>
-    </div>
-  </section>
-
-  <!-- 種類から探す -->
-  <section>
-    <h2>📂 種類から探す</h2>
-    <div class="grid">
-      <a href="#" class="banner yellow"><img src="ob.png" alt="OB">OB</a>
-      <a href="#" class="banner yellow"><img src="penalty.png" alt="ペナルティ">ペナルティ</a>
-      <a href="#" class="banner yellow"><img src="playorder.png" alt="プレー順">プレー順</a>
-      <a href="#" class="banner yellow"><img src="club.png" alt="道具のルール">道具のルール</a>
-    </div>
-  </section>
+  <input type="text" id="search" placeholder="ルールを検索...">
+  <div id="categories"></div>
 </body>
 </html>
