@@ -3,49 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゴルフルールアプリ</title>
+  <title>公式ルールを即答するAIキャディ</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>ゴルフルール検索</h1>
-  </header>
+  <h1>公式ルールを即答するAIキャディ</h1>
+  <p>ルールを確認しながらスイスイラウンド</p>
 
-  <main>
-    <!-- ルール一覧ボタン -->
-    <button class="main-btn">ルール一覧 (最新2025ver)</button>
+  <button class="btn-category yellow" onclick="location.href='rules.html'">ルール一覧(最新2025ver)</button>
 
-    <!-- 検索ボックス -->
-    <div class="search-box">
-      <input type="text" id="search" placeholder="ルールを検索..." oninput="showSuggestions(this.value)">
-      <ul id="suggestions"></ul>
-    </div>
+  <input type="text" id="searchBox" placeholder="ルールを検索…">
 
-    <!-- よく見るルール -->
-    <section>
-      <h2>よく見るルール</h2>
-      <div class="button-grid">
-        <button>OB</button>
-        <button>バンカー</button>
-        <button>池（ペナルティエリア）</button>
-        <button>プレーファスト</button>
-      </div>
-    </section>
+  <h2>🌟 よく見るルール</h2>
+  <button class="btn-rule">バンカーでクラブを砂につけていい？</button>
+  <button class="btn-rule">旗を抜いていい？</button>
 
-    <!-- カテゴリーボタン -->
-    <section>
-      <h2>カテゴリから探す</h2>
-      <div class="button-grid">
-        <button>ティーイングエリア</button>
-        <button>フェアウェイ</button>
-        <button>ラフ</button>
-        <button>グリーン</button>
-        <button>ペナルティエリア</button>
-        <button>バンカー</button>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+  <h2>🌱 場所でさがす</h2>
+  <div class="btn-grid">
+    <button class="btn-rule">OB</button>
+    <button class="btn-rule">フェアウェイ</button>
+    <button class="btn-rule">ラフ</button>
+    <button class="btn-rule">グリーン</button>
+    <button class="btn-rule">ウォーターハザード</button>
+  </div>
 </body>
 </html>

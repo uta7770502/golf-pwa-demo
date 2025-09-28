@@ -1,65 +1,49 @@
 body {
   font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  text-align: center;
-}
-
-header {
-  background: #2d6a4f;
-  color: white;
   padding: 10px;
+  line-height: 1.6;
 }
 
 h1 {
   font-size: 20px;
 }
 
-.main-btn {
-  width: 90%;
-  padding: 15px;
-  margin: 15px auto;
-  background: #ffcc00;
-  border: none;
+h2 {
   font-size: 18px;
-  border-radius: 8px;
+  margin-top: 20px;
 }
 
-.search-box {
-  margin: 10px;
-}
-
-.search-box input {
-  width: 90%;
+input[type="text"] {
+  display: block;
+  width: 100%;
   padding: 10px;
+  margin: 10px 0;
   font-size: 16px;
 }
 
-#suggestions {
-  list-style: none;
-  padding: 0;
-  margin: 5px auto;
-  width: 90%;
-  text-align: left;
+.btn-rule, .btn-category {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
 }
 
-#suggestions li {
-  padding: 8px;
-  border-bottom: 1px solid #ccc;
+.btn-rule {
+  background: #e6f9e6;
+  color: black;
 }
 
-.button-grid {
+.btn-category.yellow {
+  background: #fff0b3;
+  font-weight: bold;
+}
+
+.btn-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  padding: 10px;
-}
-
-.button-grid button {
-  padding: 20px;
-  background: #d8f3dc;
-  border: none;
-  font-size: 16px;
-  border-radius: 8px;
 }

@@ -1,23 +1,15 @@
-const rules = [
-  "OB",
-  "バンカー",
-  "池（ペナルティエリア）",
-  "プレーファスト",
-  "ティーイングエリア",
-  "フェアウェイ",
-  "ラフ",
-  "グリーン",
-  "ペナルティエリア"
-];
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBox = document.getElementById("ruleSearch");
+  const rulesList = document.getElementById("rulesList");
 
-function showSuggestions(value) {
-  const list = document.getElementById("suggestions");
-  list.innerHTML = "";
-  if (!value) return;
-  const filtered = rules.filter(rule => rule.includes(value));
-  filtered.forEach(rule => {
-    const li = document.createElement("li");
-    li.textContent = rule;
-    list.appendChild(li);
-  });
-}
+  if (searchBox) {
+    searchBox.addEventListener("input", () => {
+      const query = searchBox.value.toLowerCase();
+      const items = rulesList.getElementsByTagName("li");
+      for (let item of items) {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? "" : "none";
+      }
+    });
+  }
+});
