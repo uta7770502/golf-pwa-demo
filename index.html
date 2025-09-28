@@ -3,15 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゴルフルール - トップ</title>
-  <link rel="manifest" href="manifest.json">
+  <title>ゴルフルール検索</title>
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
-  <h1>ゴルフルール検索</h1>
-  <input type="text" placeholder="ルールを検索">
-  <nav>
-    <a href="category.html">場所で探す</a>
-    <a href="rules.html">よく見るルール</a>
-  </nav>
+  <h1>公式ルールを即答するAIキャディ</h1>
+  <p>ルールを確認しながらスイスイラウンド</p>
+  <input type="text" placeholder="ルールを検索…" class="search-box">
+
+  <section>
+    <h2>🌟 よく見るルール</h2>
+    <button class="rule-btn">バンカーでクラブを砂につけていい？</button>
+    <button class="rule-btn">旗を抜いていい？</button>
+  </section>
+
+  <section>
+    <h2>🌱 場所でさがす</h2>
+    <div class="grid">
+      <button class="rule-btn">OB</button>
+      <button class="rule-btn">フェアウェイ</button>
+      <button class="rule-btn">ラフ</button>
+      <button class="rule-btn">グリーン</button>
+      <button class="rule-btn">ウォーターハザード</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>📁 種類から探す</h2>
+    <div class="grid">
+      <button class="rule-btn yellow">OB</button>
+      <button class="rule-btn yellow">ペナルティ</button>
+      <button class="rule-btn yellow">プレー順</button>
+      <button class="rule-btn yellow">道具のルール</button>
+    </div>
+  </section>
+
+  <script src="script.js?v=7"></script>
 </body>
 </html>

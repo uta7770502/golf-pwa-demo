@@ -1,57 +1,53 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  margin: 20px;
+  font-family: sans-serif;
+  margin: 16px;
+  background: #fff;
 }
 
 h1 {
   font-size: 20px;
-  margin-bottom: 5px;
-}
-
-p {
-  margin-top: 0;
-  color: #555;
-}
-
-.search-box {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  margin-bottom: 4px;
 }
 
 h2 {
   font-size: 18px;
-  margin-top: 20px;
+  margin: 16px 0 8px;
 }
 
-.button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.search-box {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin: 8px 0 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.rule-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 6px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background: #e6f9ee;
+  text-align: center;
+}
+
+.rule-btn.yellow {
+  background: #fff3cd;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.button {
-  flex: 1 1 calc(50% - 10px);
-  max-width: calc(50% - 10px);
-  margin: 5px 0;
-  padding: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #000;
-}
-
-.green-button {
-  background-color: #e6f8e6;
-}
-
-.yellow-button {
-  background-color: #fff4cc;
+@media (max-width: 480px) {
+  .rule-btn {
+    font-size: 18px;
+    padding: 16px;
+  }
 }
