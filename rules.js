@@ -1,34 +1,18 @@
+let rules = [];
 fetch('rules.json')
   .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById('rulesContainer');
-    const searchBox = document.getElementById('searchBox');
+  .then(data => rules = data);
 
-    function renderRules(filter = '') {
-      container.innerHTML = '';
-      const grouped = {};
-      data.forEach(rule => {
-        if (rule.title.includes(filter)) {
-          if (!grouped[rule.category]) grouped[rule.category] = [];
-          grouped[rule.category].push(rule.title);
-        }
-      });
+function showSuggestions() {
+  let input = document.getElementById('searchBox').value.toLowerCase();
+  let suggestionBox = document.getElementById('suggestions');
+  suggestionBox.innerHTML = "";
+  if (input.length === 0) return;
 
-      Object.keys(grouped).sort().forEach(cat => {
-        const catDiv = document.createElement('div');
-        catDiv.className = 'category';
-        catDiv.textContent = cat;
-        container.appendChild(catDiv);
-
-        grouped[cat].sort().forEach(title => {
-          const btn = document.createElement('a');
-          btn.className = 'button';
-          btn.textContent = title;
-          container.appendChild(btn);
-        });
-      });
-    }
-
-    searchBox.addEventListener('input', () => renderRules(searchBox.value));
-    renderRules();
+  let filtered = rules.filter(r => r.title.toLowerCase().includes(input));
+  filtered.slice(0, 5).forEach(r => {
+    let li = document.createElement('li');
+    li.textContent = r.title;
+    suggestionBox.appendChild(li);
   });
+}

@@ -1,29 +1,38 @@
-async function loadRules() {
-  const res = await fetch('rules.json');
-  const data = await res.json();
-  const container = document.getElementById('rulesContainer');
+let rules = [];
+
+// JSONを読み込む
+fetch('rules.json')
+  .then(response => response.json())
+  .then(data => {
+    rules = data.rules;
+    displayRules(rules);
+  });
+
+// ルールを一覧表示
+function displayRules(rules) {
+  const container = document.getElementById('rulesList');
   if (!container) return;
   container.innerHTML = '';
-  data.rules.forEach(rule => {
-    const btn = document.createElement('button');
-    btn.textContent = rule.title;
-    btn.className = 'rule-button';
-    container.appendChild(btn);
+  rules.forEach(rule => {
+    const a = document.createElement('a');
+    a.href = '#';
+    a.className = 'rule-btn';
+    a.textContent = rule.title;
+    container.appendChild(a);
   });
 }
 
-function searchRules(query) {
-  query = query.toLowerCase();
-  const buttons = document.querySelectorAll('.rule-button');
-  buttons.forEach(btn => {
-    if (btn.textContent.toLowerCase().includes(query)) {
-      btn.style.display = 'block';
-    } else {
-      btn.style.display = 'none';
-    }
-  });
+// 検索フィルター
+function filterRules() {
+  const query = document.getElementById('ruleSearch').value.toLowerCase();
+  const filtered = rules.filter(rule => rule.title.toLowerCase().includes(query));
+  displayRules(filtered);
 }
 
-window.onload = () => {
-  loadRules();
-};
+function searchRules() {
+  const query = document.getElementById('searchBox').value.toLowerCase();
+  const filtered = rules.filter(rule => rule.title.toLowerCase().includes(query));
+  if (filtered.length > 0) {
+    window.location.href = "rules.html";
+  }
+}
