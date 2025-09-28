@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIキャディ - ゴルフルール検索</title>
+  <link rel="manifest" href="manifest.json" />
+  <script>
+    const translations = {
+      ja: {
+        title: "公式ルールを即答するAIキャディ",
+        subtitle: "もう迷わない、ルールもプレーもスムーズに。",
+        searchPlaceholder: "ルールを検索...",
+        categories: ["ティー", "OB", "バンカー", "グリーン", "ペナルティ"],
+        favorites: "お気に入り"
+      },
+      en: {
+        title: "Official Rules Instantly Answered by AI Caddie",
+        subtitle: "Play smoothly without hesitation.",
+        searchPlaceholder: "Search rules...",
+        categories: ["Tee", "Out of Bounds", "Bunker", "Green", "Penalty"],
+        favorites: "Favorites"
+      }
+    };
+
+    function switchLang(lang) {
+      document.getElementById("title").innerText = translations[lang].title;
+      document.getElementById("subtitle").innerText = translations[lang].subtitle;
+      document.getElementById("search").placeholder = translations[lang].searchPlaceholder;
+      document.querySelectorAll(".cat-btn").forEach((btn, i) => {
+        btn.innerText = translations[lang].categories[i];
+      });
+      document.getElementById("favorites").innerText = translations[lang].favorites;
+    }
+
+    window.onload = () => switchLang("ja");
+  </script>
+  <style>
+    body { font-family: sans-serif; margin: 0; text-align: center; }
+    header { padding: 1em; }
+    h1 { font-size: 1.4em; margin: 0.2em 0; }
+    h2 { font-size: 1em; margin: 0.2em 0; color: #666; }
+    .lang-switch { margin: 0.5em; }
+    .search-box { margin: 1em; }
+    input[type="text"] { width: 80%; padding: 0.8em; border-radius: 8px; }
+    .categories { display: flex; flex-wrap: wrap; justify-content: center; margin: 1em; }
+    .cat-btn { flex: 1 0 40%; margin: 0.5em; padding: 1em; border-radius: 12px; background: #f0f0f0; border: none; }
+    footer { position: fixed; bottom: 0; width: 100%; background: #eee; display: flex; justify-content: space-around; }
+    footer button { background: none; border: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="lang-switch">
+      <button onclick="switchLang('ja')">JP</button> | 
+      <button onclick="switchLang('en')">EN</button>
+    </div>
+    <h1 id="title"></h1>
+    <h2 id="subtitle"></h2>
+  </header>
+  <div class="search-box">
+    <input type="text" id="search" placeholder="" />
+  </div>
+  <div class="categories">
+    <button class="cat-btn"></button>
+    <button class="cat-btn"></button>
+    <button class="cat-btn"></button>
+    <button class="cat-btn"></button>
+    <button class="cat-btn"></button>
+  </div>
+  <footer>
+    <button id="favorites">お気に入り</button>
+    <button>検索</button>
+    <button>AIキャディ</button>
+    <button>マイページ</button>
+  </footer>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
