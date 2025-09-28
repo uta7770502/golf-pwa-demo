@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+p {
+  margin-top: 0;
+  color: #555;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  margin: 5px 1%;
+  padding: 18px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* よく見るルール → 幅いっぱい */
+.full-width-button {
+  display: block;
+  width: 95%;
+  margin: 8px auto;
+}
+
+/* キーワード / 種類から探す → 横に2つ */
+.half-width-button {
+  width: 47%;
+}
+
+/* 色分け */
+.green-button {
+  background-color: #e6f8e6;
+}
+
+.yellow-button {
+  background-color: #fff4cc;
+}
