@@ -1,49 +1,43 @@
 body {
   font-family: sans-serif;
-  padding: 10px;
-  line-height: 1.6;
+  background: #fff;
+  margin: 0;
+  padding: 20px;
 }
-
+.container {
+  max-width: 600px;
+  margin: auto;
+}
 h1 {
   font-size: 20px;
 }
-
-h2 {
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-input[type="text"] {
+.top-button {
   display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-.btn-rule, .btn-category {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
+  background: #f9e5a3;
+  padding: 12px;
   text-align: center;
-}
-
-.btn-rule {
-  background: #e6f9e6;
-  color: black;
-}
-
-.btn-category.yellow {
-  background: #fff0b3;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
   font-weight: bold;
 }
-
-.btn-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+#searchBox {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.rule-btn {
+  display: block;
+  width: 100%;
+  background: #dff5e3;
+  border: none;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #000;
+  text-align: center;
 }
