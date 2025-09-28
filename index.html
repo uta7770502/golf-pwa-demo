@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゴルフルール検索</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公式ルールを即答するAIキャディ</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>公式ルールを即答するAIキャディ</h1>
-    <p>ルールを確認しながらスイスイラウンド</p>
-  </header>
+    <div class="container">
+        <h1>公式ルールを即答するAIキャディ</h1>
+        <p>ルールを確認しながらスイスイラウンド</p>
 
-  <main>
-    <a href="rules.html" class="main-btn">ルール一覧(最新2025ver)</a>
-    <input type="text" id="searchBox" placeholder="ルールを検索…" onkeyup="searchRules()">
+        <a href="rules.html" class="button yellow">ルール一覧（最新2025ver）</a>
+        <input type="text" placeholder="ルールを検索…" class="search-box">
 
-    <section>
-      <h2>🌟 よく見るルール</h2>
-      <div class="button-grid">
-        <a href="rules.html#rule1" class="rule-btn">バンカーでクラブを砂につけていい？</a>
-        <a href="rules.html#rule2" class="rule-btn">旗を抜いていい？</a>
-      </div>
-    </section>
+        <h2>🌟 よく見るルール</h2>
+        <div class="button-list">
+            <a href="#" class="button green">バンカーでクラブを砂につけていい？</a>
+            <a href="#" class="button green">旗を抜いていい？</a>
+        </div>
 
-    <section>
-      <h2>🌱 場所でさがす</h2>
-      <div class="button-grid">
-        <a href="rules.html#OB" class="rule-btn">OB</a>
-        <a href="rules.html#フェアウェイ" class="rule-btn">フェアウェイ</a>
-        <a href="rules.html#ラフ" class="rule-btn">ラフ</a>
-        <a href="rules.html#グリーン" class="rule-btn">グリーン</a>
-        <a href="rules.html#ウォーターハザード" class="rule-btn">ウォーターハザード</a>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+        <h2>🌱 場所でさがす</h2>
+        <div class="button-list">
+            <a href="#" class="button green">OB</a>
+            <a href="#" class="button green">フェアウェイ</a>
+            <a href="#" class="button green">ラフ</a>
+            <a href="#" class="button green">グリーン</a>
+            <a href="#" class="button green">ウォーターハザード</a>
+        </div>
+    </div>
 </body>
 </html>

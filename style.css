@@ -1,51 +1,52 @@
 body {
-  font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #fff;
-  color: #000;
-  text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #222;
 }
-header {
-  padding: 1em;
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
 }
 h1 {
-  font-size: 1.5em;
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
-.main-btn {
-  display: block;
-  margin: 1em auto;
-  padding: 1em;
-  background: #ffeb3b;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  color: #000;
+h2 {
+    margin-top: 25px;
+    font-size: 1.2em;
+    text-align: left;
 }
-.rule-btn {
-  display: inline-block;
-  background: #d4f5d0;
-  padding: 0.8em;
-  margin: 0.3em;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
+.search-box {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-.rule-btn:hover {
-  background: #b6e8a5;
+.button-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
 }
-.button-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.button {
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
 }
-input[type="text"] {
-  padding: 0.8em;
-  margin: 1em auto;
-  width: 80%;
-  max-width: 400px;
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.button.yellow {
+    background: #ffe48f;
+    color: #333;
+}
+.button.green {
+    background: #d9f7e6;
+    color: #000;
 }
