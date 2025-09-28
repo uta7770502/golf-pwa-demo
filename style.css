@@ -1,0 +1,7 @@
+body { font-family: sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+header { background: #eee; padding: 1em; text-align: center; }
+h1 { margin: 0; font-size: 1.2em; }
+section { margin: 1em; padding: 1em; background: #fff; border-radius: 8px; }
+.grid { display: flex; flex-wrap: wrap; gap: 1em; }
+.item { flex: 1 1 40%; background: #f1fdf1; border-radius: 8px; text-align: center; padding: 0.5em; }
+.item img { width: 32px; height: 32px; display: block; margin: 0 auto; }

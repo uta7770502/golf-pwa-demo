@@ -1,0 +1,9 @@
+{
+  "name": "AIキャディ",
+  "short_name": "AIキャディ",
+  "start_url": ".",
+  "display": "standalone",
+  "icons": [
+    { "src": "icons/tee.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}

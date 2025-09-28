@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公式ルールを即答するAIキャディ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <h1>公式ルールを即答するAIキャディ</h1>
+    <p>ルールを確認しながらスイスイラウンド</p>
+  </header>
+
+  <section class="rules">
+    <h2>⭐ よく見るルール</h2>
+    <ul>
+      <li>バンカーでクラブを砂につけていい？</li>
+      <li>旗を抜いていい？</li>
+    </ul>
+  </section>
+
+  <section class="search">
+    <h2>🌱 場所から探す</h2>
+    <div class="grid">
+      <div class="item"><img src="icons/tee.png"><span>ティー</span></div>
+      <div class="item"><img src="icons/fairway.png"><span>フェアウェイ</span></div>
+      <div class="item"><img src="icons/rough.png"><span>ラフ</span></div>
+      <div class="item"><img src="icons/green.png"><span>グリーン</span></div>
+      <div class="item"><img src="icons/water.png"><span>ウォーターハザード</span></div>
+    </div>
+  </section>
+
+  <section class="search">
+    <h2>📄 種類から探す</h2>
+    <div class="grid">
+      <div class="item"><img src="icons/ob.png"><span>OB</span></div>
+      <div class="item"><img src="icons/penalty.png"><span>ペナルティ</span></div>
+      <div class="item"><img src="icons/playorder.png"><span>プレー順</span></div>
+      <div class="item"><img src="icons/club.png"><span>道具のルール</span></div>
+    </div>
+  </section>
+
+  <script src="service-worker.js"></script>
+</body>
+</html>
