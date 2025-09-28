@@ -2,36 +2,51 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゴルフルールAIキャディ</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    h1 { font-size: 20px; }
+    .button {
+      display: block;
+      padding: 15px;
+      margin: 10px 0;
+      text-align: center;
+      background: #f7f7f7;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+      border: 1px solid #ccc;
+    }
+    .highlight {
+      background: #ffeb99;
+      font-size: 18px;
+    }
+    input {
+      padding: 10px;
+      width: 95%;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .section-title { margin-top: 20px; font-weight: bold; font-size: 18px; }
+  </style>
 </head>
 <body>
   <h1>公式ルールを即答するAIキャディ</h1>
   <p>ルールを確認しながらスイスイラウンド</p>
+  <a href="rules.html" class="button highlight">ルール一覧（最新2025ver）</a>
+  <input type="text" placeholder="ルールを検索…">
+  
+  <div class="section-title">⭐ よく見るルール</div>
+  <a href="rules.html#バンカー" class="button">バンカーでクラブを砂につけていい？</a>
+  <a href="rules.html#旗" class="button">旗を抜いていい？</a>
 
-  <button class="main-button" onclick="location.href='rules.html'">ルール一覧 (最新2025ver)</button>
-
-  <input type="text" id="searchBox" placeholder="ルールを検索..." oninput="searchRules(this.value)">
-
-  <section>
-    <h2>🌟 よく見るルール</h2>
-    <div class="button-container">
-      <button class="rule-button">バンカーでクラブを砂につけていい？</button>
-      <button class="rule-button">旗を抜いていい？</button>
-    </div>
-  </section>
-
-  <section>
-    <h2>🌱 場所でさがす</h2>
-    <div class="button-container">
-      <button class="rule-button">OB</button>
-      <button class="rule-button">フェアウェイ</button>
-      <button class="rule-button">ラフ</button>
-      <button class="rule-button">グリーン</button>
-      <button class="rule-button">ウォーターハザード</button>
-    </div>
-  </section>
+  <div class="section-title">🌱 場所でさがす</div>
+  <a href="rules.html#OB" class="button">OB</a>
+  <a href="rules.html#フェアウェイ" class="button">フェアウェイ</a>
+  <a href="rules.html#ラフ" class="button">ラフ</a>
+  <a href="rules.html#グリーン" class="button">グリーン</a>
+  <a href="rules.html#ウォーターハザード" class="button">ウォーターハザード</a>
 </body>
 </html>

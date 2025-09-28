@@ -1,1 +1,22 @@
-{"rules": [{"title": "バンカーでクラブを砂につけていい？", "category": "バンカー"}, {"title": "旗を抜いていい？", "category": "グリーン"}, {"title": "OBになったときの処置", "category": "OB"}, {"title": "ウォーターハザードでの処置", "category": "ウォーターハザード"}, {"title": "ラフでのプレー方法", "category": "ラフ"}, {"title": "グリーン上のマナー", "category": "グリーン"}, {"title": "ティーグラウンドでの順番", "category": "ティーグラウンド"}, {"title": "ペナルティ杭（赤・黄）の違い", "category": "ペナルティ"}, {"title": "クラブの本数制限", "category": "道具"}, {"title": "球が動いた場合の処置", "category": "一般"}, {"title": "プレーの順番ルール", "category": "プレー"}, {"title": "ドロップの正しい方法", "category": "一般"}, {"title": "ティーアップの位置", "category": "ティーグラウンド"}, {"title": "カップに球が引っかかったとき", "category": "グリーン"}, {"title": "アンプレアブルの宣言", "category": "一般"}, {"title": "二度打ちの処置", "category": "一般"}, {"title": "空振りは1打になる？", "category": "一般"}, {"title": "他人の球を打ってしまった場合", "category": "一般"}, {"title": "バンカーの砂をならすタイミング", "category": "バンカー"}, {"title": "練習スイングで芝を削っていい？", "category": "一般"}]}
+[
+  { "title": "OBになったときの処置", "category": "OB" },
+  { "title": "ティーグラウンドでの順番", "category": "ティーグラウンド" },
+  { "title": "バンカーでクラブを砂につけていい？", "category": "バンカー" },
+  { "title": "ウォーターハザードでの処置", "category": "ウォーターハザード" },
+  { "title": "グリーン上のマナー", "category": "グリーン" },
+  { "title": "旗を抜いていい？", "category": "グリーン" },
+  { "title": "ラフでのプレー方法", "category": "ラフ" },
+  { "title": "ペナルティ杭（赤・黄）の違い", "category": "ペナルティ" },
+  { "title": "紛失球の扱い", "category": "OB" },
+  { "title": "2打目のプレーエリア", "category": "フェアウェイ" },
+  { "title": "暫定球の宣言", "category": "OB" },
+  { "title": "ティーマーカーの扱い", "category": "ティーグラウンド" },
+  { "title": "空振りは何打？", "category": "一般" },
+  { "title": "練習スイングの制限", "category": "一般" },
+  { "title": "旗竿に当たった場合", "category": "グリーン" },
+  { "title": "グリーン上のボールマーク修復", "category": "グリーン" },
+  { "title": "池に入ったボール", "category": "ウォーターハザード" },
+  { "title": "同伴競技者のボールに当たった場合", "category": "一般" },
+  { "title": "カート道路に止まったボール", "category": "救済" },
+  { "title": "クラブの本数制限", "category": "一般" }
+]
