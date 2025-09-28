@@ -1,52 +1,53 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    color: #222;
+  font-family: sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
-.container {
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+
+header {
+  background: #228B22;
+  color: white;
+  padding: 1em;
 }
-h1 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+
+h1, h2 {
+  margin: 0.5em 0;
 }
-h2 {
-    margin-top: 25px;
-    font-size: 1.2em;
-    text-align: left;
+
+input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
-.search-box {
-    width: 100%;
-    padding: 10px;
-    margin: 15px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+.main-btn {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 15px;
+  font-size: 18px;
+  background: #006400;
+  color: white;
+  border: none;
+  border-radius: 8px;
 }
-.button-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
 }
-.button {
-    display: block;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-}
-.button.yellow {
-    background: #ffe48f;
-    color: #333;
-}
-.button.green {
-    background: #d9f7e6;
-    color: #000;
+
+.rule-btn {
+  padding: 20px;
+  font-size: 18px;
+  background: #90EE90;
+  border: none;
+  border-radius: 8px;
 }

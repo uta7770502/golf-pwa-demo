@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>公式ルールを即答するAIキャディ</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゴルフルール検索</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>公式ルールを即答するAIキャディ</h1>
-        <p>ルールを確認しながらスイスイラウンド</p>
+  <header>
+    <h1>ゴルフルール検索</h1>
+  </header>
+  <main>
+    <input type="text" id="searchBox" placeholder="ルールを検索...">
+    <button onclick="location.href='rules.html'" class="main-btn">ルール一覧 (最新2025ver)</button>
 
-        <a href="rules.html" class="button yellow">ルール一覧（最新2025ver）</a>
-        <input type="text" placeholder="ルールを検索…" class="search-box">
+    <section>
+      <h2>よく見るルール</h2>
+      <div class="button-grid">
+        <button class="rule-btn">OB</button>
+        <button class="rule-btn">ラフ</button>
+        <button class="rule-btn">バンカー</button>
+        <button class="rule-btn">グリーン</button>
+      </div>
+    </section>
 
-        <h2>🌟 よく見るルール</h2>
-        <div class="button-list">
-            <a href="#" class="button green">バンカーでクラブを砂につけていい？</a>
-            <a href="#" class="button green">旗を抜いていい？</a>
-        </div>
-
-        <h2>🌱 場所でさがす</h2>
-        <div class="button-list">
-            <a href="#" class="button green">OB</a>
-            <a href="#" class="button green">フェアウェイ</a>
-            <a href="#" class="button green">ラフ</a>
-            <a href="#" class="button green">グリーン</a>
-            <a href="#" class="button green">ウォーターハザード</a>
-        </div>
-    </div>
+    <section>
+      <h2>カテゴリから探す</h2>
+      <div class="button-grid">
+        <button class="rule-btn">ティー</button>
+        <button class="rule-btn">フェアウェイ</button>
+        <button class="rule-btn">ハザード</button>
+        <button class="rule-btn">ペナルティ</button>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

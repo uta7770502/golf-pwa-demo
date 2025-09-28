@@ -1,18 +1,25 @@
-let rules = [];
-fetch('rules.json')
-  .then(response => response.json())
-  .then(data => rules = data);
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("data/rules.json")
+    .then(res => res.json())
+    .then(data => {
+      const rulesList = document.getElementById("rulesList");
+      const searchBox = document.getElementById("searchRules");
 
-function showSuggestions() {
-  let input = document.getElementById('searchBox').value.toLowerCase();
-  let suggestionBox = document.getElementById('suggestions');
-  suggestionBox.innerHTML = "";
-  if (input.length === 0) return;
+      function renderRules(filter = "") {
+        rulesList.innerHTML = "";
+        let filtered = data.filter(r => r.title.includes(filter));
+        filtered.forEach(rule => {
+          const div = document.createElement("div");
+          div.className = "rule-item";
+          div.innerHTML = `<h3>${rule.title}</h3><p>${rule.desc}</p>`;
+          rulesList.appendChild(div);
+        });
+      }
 
-  let filtered = rules.filter(r => r.title.toLowerCase().includes(input));
-  filtered.slice(0, 5).forEach(r => {
-    let li = document.createElement('li');
-    li.textContent = r.title;
-    suggestionBox.appendChild(li);
-  });
-}
+      renderRules();
+
+      searchBox.addEventListener("input", (e) => {
+        renderRules(e.target.value);
+      });
+    });
+});

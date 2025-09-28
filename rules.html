@@ -1,38 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ルール一覧（最新2025ver）</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ルール一覧</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="rules.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>ルール一覧（最新2025ver）</h1>
-        <input type="text" placeholder="ルールを検索…" class="search-box">
-
-        <div class="button-list">
-            <a href="#" class="button green">バンカーでクラブを砂につけていい？</a>
-            <a href="#" class="button green">旗を抜いていい？</a>
-            <a href="#" class="button green">OBになったときの処置</a>
-            <a href="#" class="button green">ウォーターハザードでの処置</a>
-            <a href="#" class="button green">ラフでのプレー方法</a>
-            <a href="#" class="button green">グリーン上のマナー</a>
-            <a href="#" class="button green">ティーグラウンドでの順番</a>
-            <a href="#" class="button green">ペナルティ杭（赤・黄）の違い</a>
-            <a href="#" class="button green">クラブの本数制限</a>
-            <a href="#" class="button green">球が動いた場合の処置</a>
-            <a href="#" class="button green">プレーの順番ルール</a>
-            <a href="#" class="button green">ドロップの正しい方法</a>
-            <a href="#" class="button green">ティーアップの位置</a>
-            <a href="#" class="button green">カップに球が引っかかったとき</a>
-            <a href="#" class="button green">アンプレアブルの宣言</a>
-            <a href="#" class="button green">二度打ちの処置</a>
-            <a href="#" class="button green">空振りは1打になる？</a>
-            <a href="#" class="button green">他人の球を打ってしまった場合</a>
-            <a href="#" class="button green">バンカーの砂をならすタイミング</a>
-            <a href="#" class="button green">練習スイングで芝を削っていい？</a>
-        </div>
-    </div>
+  <header>
+    <h1>ルール一覧</h1>
+  </header>
+  <main>
+    <input type="text" id="searchRules" placeholder="ルールを検索...">
+    <div id="rulesList"></div>
+  </main>
 </body>
 </html>
