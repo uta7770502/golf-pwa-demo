@@ -1,0 +1,73 @@
+body {
+  font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 20px 10px 10px;
+}
+
+section {
+  padding: 0 10px 20px;
+}
+
+.card-list, .grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  background: #f0fdf4;
+  padding: 15px;
+  border-radius: 12px;
+  flex: 1 1 calc(50% - 10px);
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:hover {
+  background: #d1fae5;
+}
+
+.card.warning {
+  background: #fff7ed;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
