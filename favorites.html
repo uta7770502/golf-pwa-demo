@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>お気に入りルール</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; }
+    header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { padding: 1rem; border-bottom: 1px solid #ddd; display: flex; align-items: center; }
+    li span { margin-right: 0.5rem; }
+    a { display: block; margin: 1rem; color: #16a34a; }
+  </style>
+</head>
+<body>
+  <header>⭐ お気に入りルール</header>
+  <div id="root"></div>
+  <a href="index.html">← トップへ戻る</a>
+  <script type="text/babel">
+    const favorites = [
+      "OBのルール",
+      "バンカーでクラブを砂につけていい？",
+      "旗を抜いていい？",
+      "グリーン上でマークの仕方"
+    ];
+    function Favorites() {
+      return (
+        <ul>
+          {favorites.map((rule, i) => (
+            <li key={i}><span>⭐</span>{rule}</li>
+          ))}
+        </ul>
+      );
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Favorites />);
+  </script>
+</body>
+</html>
