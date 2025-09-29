@@ -154,7 +154,8 @@
     ],
     "detail": "杭の色によって意味が異なります。白杭はOB境界、赤杭はラテラルウォーターハザード、黄色杭はウォーターハザード、青杭は修理地を示します。",
     "tip": "杭の意味は基本ルールで決まっていますが、ローカルルールで異なる場合もあるためスタート前に確認しましょう。",
-    "image": "images/stakes.png"
+    "image": "images/stakes.png",
+    "illustration": "images/stakes-diagram.png"
   },
   {
     "id": 107,
@@ -165,7 +166,8 @@
     ],
     "detail": "各ゴルフ場には独自のローカルルールが設定されている場合があります。例：前進4打、修理地の扱い、プレイング4など。",
     "tip": "スタート前にスコアカード裏面や掲示板で必ず確認しておくとトラブルを防げます。",
-    "image": "images/local-rules.png"
+    "image": "images/local-rules.png",
+    "illustration": "images/local-rules-diagram.png"
   },
   {
     "id": 108,
@@ -177,6 +179,7 @@
     ],
     "detail": "一般的に白ティーは男性用、赤ティーは女性用、青ティーはバックティーとして使用されます。ただしゴルフ場によって運用は異なります。",
     "tip": "競技やラウンド時はスタート前にどのティーを使用するか必ず確認しましょう。",
-    "image": "images/tee-markers.png"
+    "image": "images/tee-markers.png",
+    "illustration": "images/tee-markers-diagram.png"
   }
 ]

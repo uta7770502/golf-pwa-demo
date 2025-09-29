@@ -15,6 +15,7 @@
     button { margin-top:1rem; padding:0.5rem 1rem; background:#facc15; border:none; border-radius:0.5rem; cursor:pointer; }
     button:hover { background:#eab308; }
     a.back { display:block; margin:1rem 0; color:#16a34a; }
+    .illustration img { width:100%; max-width:400px; margin:1rem 0; border-radius:0.5rem; }
   </style>
 </head>
 <body>
@@ -36,11 +37,9 @@
             const found = data.find(r => r.id === id);
             setRule(found);
 
-            // お気に入り状態を確認
             const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
             setIsFavorite(favs.includes(id));
 
-            // 最近見たルールを保存
             if (found) {
               let recents = JSON.parse(localStorage.getItem("recentRules") || "[]");
               recents = [found.id, ...recents.filter(rid => rid !== found.id)];
@@ -68,6 +67,11 @@
         <div className="container">
           <h2>{rule.name}</h2>
           <p>{rule.detail}</p>
+          {rule.illustration && (
+            <div className="illustration">
+              <img src={rule.illustration} alt={rule.name + "の図解"} />
+            </div>
+          )}
           <div className="tip">💡 {rule.tip}</div>
           <button onClick={toggleFavorite}>
             {isFavorite ? "⭐ お気に入り解除" : "⭐ お気に入りに追加"}
