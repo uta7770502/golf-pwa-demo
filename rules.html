@@ -16,6 +16,7 @@
     .categories { margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
     .categories button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
     .active { background:#16a34a; color:white; }
+    input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -30,6 +31,7 @@
     function Rules() {
       const [rules, setRules] = React.useState([]);
       const [selected, setSelected] = React.useState("すべて");
+      const [query, setQuery] = React.useState("");
 
       React.useEffect(() => {
         fetch("rules.json")
@@ -37,12 +39,21 @@
           .then(data => setRules(data));
       }, []);
 
-      const filtered = selected === "すべて"
-        ? rules
-        : rules.filter(rule => rule.category === selected);
+      const filtered = rules.filter(rule => {
+        const matchCategory = selected === "すべて" || rule.category === selected;
+        const matchQuery = query === "" || rule.name.includes(query);
+        return matchCategory && matchQuery;
+      });
 
       return (
         <div>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="ルールを検索..."
+            className="search"
+          />
           <div className="categories">
             {categories.map(cat => (
               <button key={cat}
