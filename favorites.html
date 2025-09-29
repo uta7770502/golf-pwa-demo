@@ -44,7 +44,7 @@
     function Favorites() {
       const [rules, setRules] = React.useState([]);
       const [query, setQuery] = React.useState("");
-      const [sort, setSort] = React.useState("added");
+      const [sort, setSort] = React.useState(localStorage.getItem("favoritesSort") || "added");
 
       React.useEffect(() => {
         loadFavorites();
@@ -71,8 +71,10 @@
       }
 
       function exportFavorites() {
-        const favorites = localStorage.getItem("favorites") || "[]";
-        const blob = new Blob([favorites], { type: "application/json" });
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const sortPref = localStorage.getItem("favoritesSort") || sort;
+        const data = { favorites, sort: sortPref };
+        const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
@@ -88,7 +90,13 @@
         reader.onload = (event) => {
           try {
             const data = JSON.parse(event.target.result);
-            localStorage.setItem("favorites", JSON.stringify(data));
+            if (data.favorites) {
+              localStorage.setItem("favorites", JSON.stringify(data.favorites));
+            }
+            if (data.sort) {
+              localStorage.setItem("favoritesSort", data.sort);
+              setSort(data.sort);
+            }
             alert("お気に入りを復元しました！");
             loadFavorites();
           } catch {
@@ -96,6 +104,11 @@
           }
         };
         reader.readAsText(file);
+      }
+
+      function handleSortChange(value) {
+        setSort(value);
+        localStorage.setItem("favoritesSort", value);
       }
 
       const filtered = rules.filter(rule => {
@@ -127,7 +140,7 @@
           />
           <div className="controls">
             <label>並び替え: </label>
-            <select value={sort} onChange={(e) => setSort(e.target.value)}>
+            <select value={sort} onChange={(e) => handleSortChange(e.target.value)}>
               <option value="added">追加順</option>
               <option value="name">名前順</option>
             </select>
