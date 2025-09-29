@@ -1,38 +1,42 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>公式ルールを即答するAIキャディ</title>
-  <link rel="stylesheet" href="style.css?v=20250302">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIキャディ - ゴルフルール検索</title>
+  <link rel="stylesheet" href="style.css?v=20250929">
 </head>
 <body>
-  <header>
-    <h1>公式ルールを即答するAIキャディ</h1>
-    <p>ルールを確認しながらスイスイラウンド</p>
-  </header>
-  <div class="container">
-    <input type="text" placeholder="ルールを検索…" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;">
-    <h2>⭐ よく見るルール</h2>
-    <a href="rules/rule1.html" class="rule-btn">バンカーでクラブを砂につけていい？</a>
-    <a href="rules/rule2.html" class="rule-btn">旗を抜いていい？</a>
+<header>
+  <h1>公式ルールを即答するAIキャディ</h1>
+  <p>ルールを確認しながらスイスイラウンド</p>
+</header>
 
-    <h2>🌱 場所でさがす</h2>
-    <div class="category">
-      <a href="rules/rule3.html" class="rule-btn">OB</a>
-      <a href="rules/rule4.html" class="rule-btn">フェアウェイ</a>
-      <a href="rules/rule5.html" class="rule-btn">ラフ</a>
-      <a href="rules/rule6.html" class="rule-btn">グリーン</a>
-      <a href="rules/rule7.html" class="rule-btn">ウォーターハザード</a>
-    </div>
+<div class="search-box">
+  <a href="rules.html" class="button btn-yellow">📒 ルール一覧（最新2025ver）</a>
+  <input type="text" placeholder="ルールを検索…">
+</div>
 
-    <h2>📂 種類から探す</h2>
-    <div class="category">
-      <a href="rules/rule8.html" class="rule-btn" style="background:#fdf5d9;">OB</a>
-      <a href="rules/rule9.html" class="rule-btn" style="background:#fdf5d9;">ペナルティ</a>
-      <a href="rules/rule10.html" class="rule-btn" style="background:#fdf5d9;">プレー順</a>
-    </div>
-  </div>
-  <footer>© 2025 AIキャディ</footer>
+<div>
+  <div class="section-title">✨ よく見るルール</div>
+  <a href="rules/bunker.html" class="button btn-green">バンカーでクラブを砂につけていい？</a>
+  <a href="rules/flag.html" class="button btn-green">旗を抜いていい？</a>
+</div>
+
+<div>
+  <div class="section-title">🌱 場所でさがす</div>
+  <a href="rules/ob.html" class="button btn-green">OB</a>
+  <a href="rules/fairway.html" class="button btn-green">フェアウェイ</a>
+  <a href="rules/rough.html" class="button btn-green">ラフ</a>
+  <a href="rules/green.html" class="button btn-green">グリーン</a>
+  <a href="rules/water.html" class="button btn-green">ウォーターハザード</a>
+</div>
+
+<div>
+  <div class="section-title">📂 種類から探す</div>
+  <a href="rules/penalty.html" class="button btn-category">ペナルティ</a>
+  <a href="rules/order.html" class="button btn-category">プレー順</a>
+</div>
+
 </body>
 </html>

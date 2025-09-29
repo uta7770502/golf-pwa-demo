@@ -1,63 +1,54 @@
 
 body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background: #fff;
+  font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
   margin: 0;
   padding: 0;
-  color: #222;
+  background: #fff;
+  color: #333;
 }
-
 header {
-  text-align: center;
   padding: 20px;
+  text-align: center;
 }
-
 h1 {
-  font-size: 22px;
-  margin: 0;
+  font-size: 20px;
+  margin-bottom: 5px;
 }
-
-h2 {
-  font-size: 18px;
-  margin-top: 20px;
+.search-box {
+  text-align: center;
+  margin: 10px;
 }
-
-.container {
-  width: 90%;
-  max-width: 600px;
-  margin: auto;
+input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
-
-button, .rule-btn {
+.section-title {
+  font-weight: bold;
+  margin: 15px 10px 5px;
+}
+.button {
   display: block;
-  width: 100%;
-  background: #dff5df;
-  border: none;
-  margin: 8px 0;
-  padding: 12px;
-  border-radius: 8px;
+  width: 90%;
+  margin: 10px auto;
+  padding: 15px;
+  text-align: center;
   font-size: 16px;
-  text-align: center;
-  cursor: pointer;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
 }
-
-button:hover, .rule-btn:hover {
-  background: #c6edc6;
+.btn-yellow {
+  background: #ffefb0;
+  color: #000;
+  font-weight: bold;
 }
-
-.category {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.btn-green {
+  background: #d6f5d6;
+  color: #000;
 }
-
-.category .rule-btn {
-  flex: 1 1 calc(50% - 10px);
-}
-
-footer {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 12px;
-  color: #888;
+.btn-category {
+  background: #fef3c7;
+  color: #000;
 }
