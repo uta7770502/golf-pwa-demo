@@ -152,5 +152,28 @@
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<Rules />);
   </script>
+
+    <script>
+    (function(){
+      function getParam(k){ return new URLSearchParams(location.search).get(k); }
+      const cat = getParam('cat');
+      const q = getParam('q');
+      // Wait for rules to be loaded if page builds list dynamically
+      function run(){
+        try{
+          if(cat){
+            const btn = document.querySelector('[data-category="'+cat+'"]');
+            if(btn){ btn.click(); return; }
+          }
+          if(q && typeof window.searchRules === 'function'){
+            window.searchRules(q);
+          }
+        }catch(e){}
+      }
+      if(document.readyState === 'complete') run();
+      else window.addEventListener('load', run);
+    })();
+    </script>
+    
 </body>
 </html>

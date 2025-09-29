@@ -51,8 +51,33 @@
   }
 }
 </style>
-</head>
+<style>
+    .home-block{margin:16px 12px;}
+    .search-wrap{display:flex;gap:8px}
+    #search-box{flex:1;padding:12px 14px;font-size:16px;border:1px solid #c9e3c9;border-radius:10px;background:#f6fbf6}
+    #voice-btn{min-width:48px;border:none;border-radius:10px;padding:0 10px;font-size:20px;background:#e8f5e8}
+    .quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+    .quick-btn{display:block;text-decoration:none;text-align:center;padding:14px 10px;border-radius:14px;border:1px solid #dfeee0;background:#f2f9f2;font-weight:600}
+    .quick-btn:hover{background:#e5f4e6}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{display:inline-block;padding:8px 12px;border-radius:20px;border:1px solid #dfeee0;background:#f7faf7;text-decoration:none}
+    .suggest{position:relative}
+    .suggest ul{list-style:none;margin:8px 0 0;padding:0;border:1px solid #cfe8cf;border-radius:10px;background:#fff;overflow:hidden}
+    .suggest li{padding:10px 12px;border-top:1px solid #eef7ee;cursor:pointer}
+    .suggest li:first-child{border-top:none}
+    @media (max-width:600px){ .quick-grid{grid-template-columns:repeat(2,1fr)} }
+    </style></head>
   <body>
+
+        <section id="search-section" class="home-block">
+          <h2>ルールを検索</h2>
+          <div class="search-wrap">
+            <input id="search-box" type="search" placeholder="キーワードで検索（例：OB、赤杭、バンカー）" aria-label="ルール検索" />
+            <button id="voice-btn" aria-label="音声入力">🎤</button>
+          </div>
+          <div id="suggest-list" class="suggest"></div>
+        </section>
+        
     <header>ゴルフルール</header>
     <div id="root"></div>
 
@@ -160,5 +185,76 @@ document.querySelectorAll('.filter-section button').forEach(btn => {
 
 
 
+
+    <section id="quick-access" class="home-block">
+      <h2>すぐ探す</h2>
+      <div class="quick-grid">
+        <a class="quick-btn ob" href="rules.html?cat=OB">🚫 OB</a>
+        <a class="quick-btn bunker" href="rules.html?cat=バンカー">🏖️ バンカー</a>
+        <a class="quick-btn green" href="rules.html?cat=グリーン">🟩 グリーン</a>
+        <a class="quick-btn stakes" href="rules.html?cat=杭">📍 杭</a>
+        <a class="quick-btn provisional" href="rules.html?cat=暫定球">⛳ 暫定球</a>
+        <a class="quick-btn wrong" href="rules.html?cat=誤球">❌ 誤球</a>
+        <a class="quick-btn lost" href="rules.html?cat=ロストボール">🔍 ロスト</a>
+        <a class="quick-btn manner" href="rules.html?cat=マナー">🙏 マナー</a>
+      </div>
+    </section>
+
+    <section id="popular-keywords" class="home-block">
+      <h2>人気のキーワード</h2>
+      <div class="chips">
+        <a class="chip" href="rules.html?cat=赤杭">🔴 赤杭</a>
+        <a class="chip" href="rules.html?cat=黄杭">🟡 黄杭</a>
+        <a class="chip" href="rules.html?cat=青杭">🔵 青杭</a>
+        <a class="chip" href="rules.html?cat=白杭">⚪ 白杭</a>
+        <a class="chip" href="rules.html?cat=砂">砂</a>
+        <a class="chip" href="rules.html?cat=空振り">空振り</a>
+        <a class="chip" href="rules.html?cat=フェアウェイ">フェアウェイ</a>
+      </div>
+    </section>
+
+    <section id="favorites-entry" class="home-block">
+      <h2>⭐ お気に入り</h2>
+      <p><a class="quick-btn fav" href="favorites.html">お気に入り一覧を開く</a></p>
+    </section>
+    
+
+    <script>
+    (function(){
+      const input = document.getElementById('search-box');
+      const list = document.getElementById('suggest-list');
+      if(!input || !list) return;
+      const common = ["OB", "赤杭", "黄杭", "白杭", "青杭", "緑杭", "黒杭", "バンカー", "グリーン", "空振り", "暫定球", "誤球", "ロストボール", "カート道", "修理地"];
+      function render(items){
+        if(!items.length){ list.innerHTML=""; return; }
+        list.innerHTML = '<ul>'+items.map(w=>'<li>'+w+'</li>').join('')+'</ul>';
+        list.querySelectorAll('li').forEach(li=>{
+          li.addEventListener('click', ()=>{ input.value = li.textContent; window.location.href = 'rules.html?q='+encodeURIComponent(li.textContent); });
+        });
+      }
+      input.addEventListener('input', ()=>{
+        const q = input.value.trim();
+        const items = common.filter(w=>w.toLowerCase().includes(q.toLowerCase())).slice(0,8);
+        render(items);
+      });
+      // voice
+      const vb = document.getElementById('voice-btn');
+      if(vb){
+        vb.addEventListener('click', ()=>{
+          const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+          if(!SR){ alert('音声入力に対応していません'); return; }
+          const r = new SR();
+          r.lang = 'ja-JP';
+          r.onresult = (e)=>{
+            const t = e.results[0][0].transcript;
+            input.value = t;
+            window.location.href = 'rules.html?q='+encodeURIComponent(t);
+          };
+          r.start();
+        });
+      }
+    })();
+    </script>
+    
 </body>
 </html>
