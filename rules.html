@@ -8,12 +8,15 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 0; }
+    body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
     ul { list-style: none; padding: 0; margin: 0; }
     li { padding: 1rem; border-bottom: 1px solid #ddd; }
     li a { text-decoration: none; color: #16a34a; font-weight: bold; }
-    a.back { display: block; margin: 1rem; color: #16a34a; }
+    .categories { margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .categories button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
+    .active { background:#16a34a; color:white; }
+    a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
 <body>
@@ -22,8 +25,11 @@
   <a class="back" href="index.html">← トップへ戻る</a>
 
   <script type="text/babel">
+    const categories = ["すべて", "ティー", "フェアウェイ", "ラフ", "バンカー", "グリーン", "OB", "ペナルティ"];
+
     function Rules() {
       const [rules, setRules] = React.useState([]);
+      const [selected, setSelected] = React.useState("すべて");
 
       React.useEffect(() => {
         fetch("rules.json")
@@ -31,12 +37,25 @@
           .then(data => setRules(data));
       }, []);
 
+      const filtered = selected === "すべて"
+        ? rules
+        : rules.filter(rule => rule.category === selected);
+
       return (
-        <ul>
-          {rules.map(rule => (
-            <li key={rule.id}><a href={"rule-detail.html?id=" + rule.id}>{rule.name}</a></li>
-          ))}
-        </ul>
+        <div>
+          <div className="categories">
+            {categories.map(cat => (
+              <button key={cat}
+                className={selected === cat ? "active" : ""}
+                onClick={() => setSelected(cat)}>{cat}</button>
+            ))}
+          </div>
+          <ul>
+            {filtered.map(rule => (
+              <li key={rule.id}><a href={"rule-detail.html?id=" + rule.id}>{rule.name}</a></li>
+            ))}
+          </ul>
+        </div>
       );
     }
 
