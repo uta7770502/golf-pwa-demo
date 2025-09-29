@@ -20,6 +20,7 @@
     .search-condition { font-size:0.9rem; color:#555; margin:0.5rem 0; }
     mark { background: yellow; }
     .excerpt { font-size:0.9rem; color:#555; margin-top:0.25rem; }
+    .no-results { padding:1rem; color:#b91c1c; font-weight:bold; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -64,7 +65,7 @@
         const text = rule.name + rule.answer + rule.detail + rule.tip;
         const matchQuery = query === "" || text.includes(query);
         const matchTag = selectedTag === "" || (rule.tags && rule.tags.includes(selectedTag));
-        return matchCategory && matchQuery && matchTag; // AND 条件
+        return matchCategory && matchQuery && matchTag;
       });
 
       return (
@@ -100,18 +101,22 @@
             </div>
           )}
           <ul>
-            {filtered.map(rule => (
-              <li key={rule.id}>
-                <a href={"rule-detail.html?id=" + rule.id}>
-                  {highlightText(rule.name, query)}
-                </a>
-                {query && (
-                  <div className="excerpt">
-                    {highlightText(rule.detail, query)}
-                  </div>
-                )}
-              </li>
-            ))}
+            {filtered.length === 0 ? (
+              <li className="no-results">❌ 該当するルールが見つかりません。</li>
+            ) : (
+              filtered.map(rule => (
+                <li key={rule.id}>
+                  <a href={"rule-detail.html?id=" + rule.id}>
+                    {highlightText(rule.name, query)}
+                  </a>
+                  {query && (
+                    <div className="excerpt">
+                      {highlightText(rule.detail, query)}
+                    </div>
+                  )}
+                </li>
+              ))
+            )}
           </ul>
         </div>
       );
