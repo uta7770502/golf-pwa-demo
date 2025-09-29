@@ -425,5 +425,313 @@
     "detail": "プレーが遅すぎる場合、警告や罰打が科されることがあります。",
     "tip": "スムーズな進行を心がけましょう。",
     "image": "images/slow-play.png"
+  },
+  {
+    "id": 129,
+    "name": "プレーの順番（マッチプレー / ストロークプレー）",
+    "category": "基本",
+    "tags": [
+      "順番"
+    ],
+    "detail": "プレー順序は原則ホールから遠い人が先ですが、ストロークプレーではレディゴルフも推奨されます。",
+    "tip": "スムーズな進行が大切です。",
+    "image": "images/play-order.png"
+  },
+  {
+    "id": 130,
+    "name": "レディゴルフ（Ready Golf）",
+    "category": "基本",
+    "tags": [
+      "マナー"
+    ],
+    "detail": "安全が確保できれば準備ができた人から先に打つことができます。",
+    "tip": "競技でも積極的に推奨されています。",
+    "image": "images/ready-golf.png"
+  },
+  {
+    "id": 131,
+    "name": "ティーアップした球が落ちた場合",
+    "category": "ティー",
+    "tags": [
+      "ティーアップ"
+    ],
+    "detail": "ティーアップした球が風で落ちた場合は無罰で再度ティーに乗せられます。",
+    "tip": "慌てずに置き直しましょう。",
+    "image": "images/tee-fall.png"
+  },
+  {
+    "id": 132,
+    "name": "誤って範囲外からティーショット",
+    "category": "ティー",
+    "tags": [
+      "ペナルティ"
+    ],
+    "detail": "ティーイングエリア外から打つと2打罰です。",
+    "tip": "正しいエリアを確認しましょう。",
+    "image": "images/tee-outside.png"
+  },
+  {
+    "id": 133,
+    "name": "探索時間は3分以内",
+    "category": "捜索",
+    "tags": [
+      "ロストボール"
+    ],
+    "detail": "ボールの捜索時間は3分まで。それを超えるとロストボール扱いです。",
+    "tip": "時計を意識しましょう。",
+    "image": "images/search-3min.png"
+  },
+  {
+    "id": 134,
+    "name": "誤球（他人のボールを打った場合）",
+    "category": "捜索",
+    "tags": [
+      "誤球"
+    ],
+    "detail": "他人のボールを打った場合は誤球で2打罰。マッチプレーではホール負け。",
+    "tip": "必ずマークを確認しましょう。",
+    "image": "images/wrong-ball.png"
+  },
+  {
+    "id": 135,
+    "name": "複数のボールを打ってしまった場合",
+    "category": "捜索",
+    "tags": [
+      "誤球"
+    ],
+    "detail": "1ホールで複数のボールを続けて打った場合、最初の球以外は誤球扱いとなります。",
+    "tip": "間違えて打たないように注意。",
+    "image": "images/multi-ball.png"
+  },
+  {
+    "id": 136,
+    "name": "動かせる障害物（落ち枝やボトル）",
+    "category": "フェアウェイ",
+    "tags": [
+      "障害物"
+    ],
+    "detail": "人工物や落ちている枝などは無罰で取り除けます。",
+    "tip": "安全を確認してから動かしましょう。",
+    "image": "images/movable-obstruction.png"
+  },
+  {
+    "id": 137,
+    "name": "動かせない障害物（スプリンクラー等）",
+    "category": "フェアウェイ",
+    "tags": [
+      "障害物"
+    ],
+    "detail": "スプリンクラーや標識などは無罰救済を受けられます。",
+    "tip": "ニアレストポイントからドロップ。",
+    "image": "images/immovable-obstruction.png"
+  },
+  {
+    "id": 138,
+    "name": "異常なコース状態からの救済",
+    "category": "フェアウェイ",
+    "tags": [
+      "救済"
+    ],
+    "detail": "泥や動物の足跡などの異常な状態は無罰で救済を受けられます。",
+    "tip": "足元が悪い場合は安全優先。",
+    "image": "images/abnormal.png"
+  },
+  {
+    "id": 139,
+    "name": "クラブを砂にソールする行為",
+    "category": "バンカー",
+    "tags": [
+      "バンカー"
+    ],
+    "detail": "ストロークの直前にクラブを砂につけると2打罰。アドレス前に軽く置くのはOK。",
+    "tip": "注意深くアドレスしましょう。",
+    "image": "images/sole-bunker.png"
+  },
+  {
+    "id": 140,
+    "name": "練習スイングで砂に触れる",
+    "category": "バンカー",
+    "tags": [
+      "バンカー"
+    ],
+    "detail": "練習スイングで砂に触れると2打罰です。",
+    "tip": "空振りにも注意。",
+    "image": "images/practice-bunker.png"
+  },
+  {
+    "id": 141,
+    "name": "バンカーからの無罰救済はNG",
+    "category": "バンカー",
+    "tags": [
+      "救済"
+    ],
+    "detail": "基本的にバンカーから無罰救済はできません。",
+    "tip": "規則をよく確認しましょう。",
+    "image": "images/no-relief-bunker.png"
+  },
+  {
+    "id": 142,
+    "name": "他人のパットを助ける行為",
+    "category": "グリーン",
+    "tags": [
+      "マナー"
+    ],
+    "detail": "他人のパットのラインを踏んで教えるのはマナー違反です。",
+    "tip": "配慮を忘れずに。",
+    "image": "images/help-putt.png"
+  },
+  {
+    "id": 143,
+    "name": "グリーン上の練習パット",
+    "category": "グリーン",
+    "tags": [
+      "マナー"
+    ],
+    "detail": "ラウンド中にグリーン上で練習パットはできません。",
+    "tip": "終わった後はOK。",
+    "image": "images/practice-green.png"
+  },
+  {
+    "id": 144,
+    "name": "フラッグスティックを抜く行為",
+    "category": "グリーン",
+    "tags": [
+      "旗"
+    ],
+    "detail": "プレーヤーはいつでも旗竿を抜く選択ができます。",
+    "tip": "ピンを抜くかは自由。",
+    "image": "images/remove-flag.png"
+  },
+  {
+    "id": 145,
+    "name": "赤杭と黄杭の違い",
+    "category": "ペナルティエリア",
+    "tags": [
+      "杭"
+    ],
+    "detail": "赤杭はラテラル、黄杭は正面の救済が必要。",
+    "tip": "必ず杭の色を確認。",
+    "image": "images/red-yellow.png"
+  },
+  {
+    "id": 146,
+    "name": "池に入ったボールを打つ選択",
+    "category": "ペナルティエリア",
+    "tags": [
+      "池"
+    ],
+    "detail": "池に入ったボールは無理に打つこともできます。",
+    "tip": "打つか救済を選択。",
+    "image": "images/water-hit.png"
+  },
+  {
+    "id": 147,
+    "name": "池の対岸からの救済",
+    "category": "ペナルティエリア",
+    "tags": [
+      "池"
+    ],
+    "detail": "赤杭のペナルティエリアでは対岸からの救済も選択可能です。",
+    "tip": "安全性も考慮しましょう。",
+    "image": "images/opposite-relief.png"
+  },
+  {
+    "id": 148,
+    "name": "OBの特設ティー",
+    "category": "OB",
+    "tags": [
+      "ローカルルール"
+    ],
+    "detail": "ローカルルールで特設ティーが設けられていることがあります。",
+    "tip": "必ず競技委員に確認。",
+    "image": "images/local-tee.png"
+  },
+  {
+    "id": 149,
+    "name": "ロストボールの扱い",
+    "category": "OB",
+    "tags": [
+      "ロストボール"
+    ],
+    "detail": "3分以内に見つからなければロストボール扱いで1打罰＋ストローク。",
+    "tip": "暫定球でプレーを継続。",
+    "image": "images/lost-ball.png"
+  },
+  {
+    "id": 150,
+    "name": "暫定球の宣言と処理",
+    "category": "OB",
+    "tags": [
+      "暫定球"
+    ],
+    "detail": "ボールがOBやロストの可能性がある場合は必ず宣言して暫定球を打つ必要があります。",
+    "tip": "宣言を忘れないように。",
+    "image": "images/provisional.png"
+  },
+  {
+    "id": 151,
+    "name": "ドロップの方法（膝の高さ）",
+    "category": "救済",
+    "tags": [
+      "ドロップ"
+    ],
+    "detail": "救済時のドロップは肩からではなく膝の高さから行います。",
+    "tip": "誤るとやり直し。",
+    "image": "images/drop-knee.png"
+  },
+  {
+    "id": 152,
+    "name": "ドロップ後に転がりすぎた場合",
+    "category": "救済",
+    "tags": [
+      "ドロップ"
+    ],
+    "detail": "ドロップ後に2クラブ以上転がった場合はやり直しです。",
+    "tip": "転がりすぎに注意。",
+    "image": "images/drop-roll.png"
+  },
+  {
+    "id": 153,
+    "name": "救済エリアの決め方",
+    "category": "救済",
+    "tags": [
+      "救済"
+    ],
+    "detail": "ニアレストポイントから1クラブ長を救済エリアとします。",
+    "tip": "クラブを使って計測。",
+    "image": "images/relief-area.png"
+  },
+  {
+    "id": 154,
+    "name": "音楽をかけながらのプレー",
+    "category": "マナー",
+    "tags": [
+      "音楽"
+    ],
+    "detail": "他人に迷惑をかけなければ音楽を流してもOKです。",
+    "tip": "音量に注意。",
+    "image": "images/music.png"
+  },
+  {
+    "id": 155,
+    "name": "携帯電話の使用",
+    "category": "マナー",
+    "tags": [
+      "携帯"
+    ],
+    "detail": "プレー中の通話はマナー違反になります。",
+    "tip": "緊急時を除いて控えましょう。",
+    "image": "images/phone.png"
+  },
+  {
+    "id": 156,
+    "name": "同伴競技者への配慮",
+    "category": "マナー",
+    "tags": [
+      "マナー"
+    ],
+    "detail": "他人が打つときは静かにし、視界に入らないように配慮しましょう。",
+    "tip": "基本的なマナー。",
+    "image": "images/respect.png"
   }
 ]
