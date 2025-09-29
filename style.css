@@ -1,4 +1,63 @@
-body { font-family: sans-serif; text-align: center; background: #fff; }
-h1 { font-size: 20px; margin-top: 20px; }
-.yellow-btn { display: inline-block; background: #FDE68A; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; }
-.green-btn { display: block; background: #D1FAE5; margin: 10px auto; padding: 12px; width: 90%; border-radius: 6px; text-decoration: none; color: #000; }
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+
+button, .rule-btn {
+  display: block;
+  width: 100%;
+  background: #dff5df;
+  border: none;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button:hover, .rule-btn:hover {
+  background: #c6edc6;
+}
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category .rule-btn {
+  flex: 1 1 calc(50% - 10px);
+}
+
+footer {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #888;
+}
