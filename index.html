@@ -4,8 +4,119 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ゴルフルール</title>
+    <!-- React & ReactDOM CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 0; background: #fff; }
+      header { background: #16a34a; color: #fff; padding: 1rem; text-align: center; font-weight: bold; }
+      button { cursor: pointer; border: none; }
+      .card { border-radius: 0.5rem; padding: 1rem; }
+      .green { background: #ecfdf5; }
+      .yellow { background: #fef9c3; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    </style>
   </head>
   <body>
+    <header>ゴルフルール</header>
     <div id="root"></div>
+
+    <script type="text/babel">
+      const rules = [
+        "バンカーでクラブを砂につけていい？",
+        "旗を抜いていい？",
+        "OBのルール",
+        "グリーン上でマークの仕方",
+        "空振りの扱い",
+        "プレー順のルール",
+      ];
+
+      function App() {
+        const [query, setQuery] = React.useState("");
+        const [suggestions, setSuggestions] = React.useState([]);
+
+        const handleChange = (e) => {
+          const value = e.target.value;
+          setQuery(value);
+
+          if (value.length > 0) {
+            const filtered = rules.filter((rule) =>
+              rule.toLowerCase().includes(value.toLowerCase())
+            );
+            setSuggestions(filtered);
+          } else {
+            setSuggestions([]);
+          }
+        };
+
+        return (
+          <main style={{ padding: "1rem" }}>
+            {/* ルール一覧 */}
+            <button className="card yellow" style={{ width: "100%", marginBottom: "1rem", fontWeight: "bold" }}>
+              📑 ルール一覧（2025 最新ver.）
+            </button>
+
+            {/* 検索 */}
+            <div>
+              <input
+                type="text"
+                value={query}
+                onChange={handleChange}
+                placeholder="ルールを検索..."
+                style={{ width: "100%", border: "1px solid #ccc", borderRadius: "0.5rem", padding: "0.75rem" }}
+              />
+              {suggestions.length > 0 && (
+                <ul style={{ marginTop: "0.5rem", border: "1px solid #ccc", borderRadius: "0.5rem", background: "#fff" }}>
+                  {suggestions.map((s, i) => (
+                    <li
+                      key={i}
+                      style={{ padding: "0.5rem", cursor: "pointer" }}
+                      onClick={() => setQuery(s)}
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {/* よく見るルール */}
+            <section style={{ marginTop: "1.5rem" }}>
+              <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>⭐ よく見るルール</h2>
+              <div className="card green">
+                バンカーでクラブを砂につけていい？旗を抜いていい？
+              </div>
+            </section>
+
+            {/* 場所で探す */}
+            <section style={{ marginTop: "1.5rem" }}>
+              <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>🌱 場所で探す</h2>
+              <div className="grid">
+                <button className="card green">OB</button>
+                <button className="card green">フェアウェイ</button>
+                <button className="card green">ラフ</button>
+                <button className="card green">グリーン</button>
+                <button className="card green" style={{ gridColumn: "span 2" }}>ウォーターハザード</button>
+              </div>
+            </section>
+
+            {/* 種類から探す */}
+            <section style={{ marginTop: "1.5rem" }}>
+              <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>📂 種類から探す</h2>
+              <div className="grid">
+                <button className="card yellow">OB</button>
+                <button className="card yellow">ペナルティ</button>
+                <button className="card yellow">プレー順</button>
+                <button className="card yellow">道具の扱い</button>
+              </div>
+            </section>
+          </main>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
   </body>
 </html>
