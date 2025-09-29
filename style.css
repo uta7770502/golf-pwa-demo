@@ -1,5 +1,4 @@
 body { font-family: sans-serif; text-align: center; background: #fff; }
-h1 { font-size: 22px; }
-.btn-yellow { display: block; margin: 10px auto; padding: 10px; background: #ffeb99; border: none; border-radius: 6px; }
-.btn-green { display: block; margin: 10px auto; padding: 12px; background: #d4f5d0; border: none; border-radius: 6px; font-size: 16px; }
-.rule-list { max-width: 400px; margin: auto; }
+h1 { font-size: 20px; margin-top: 20px; }
+.yellow-btn { display: inline-block; background: #FDE68A; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+.green-btn { display: block; background: #D1FAE5; margin: 10px auto; padding: 12px; width: 90%; border-radius: 6px; text-decoration: none; color: #000; }
