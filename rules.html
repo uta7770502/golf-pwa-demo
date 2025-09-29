@@ -21,6 +21,9 @@
     mark { background: yellow; }
     .excerpt { font-size:0.9rem; color:#555; margin-top:0.25rem; }
     .no-results { padding:1rem; color:#b91c1c; font-weight:bold; }
+    .pagination { margin:1rem 0; display:flex; justify-content:center; align-items:center; gap:1rem; }
+    .pagination button { padding:0.5rem 1rem; border:none; border-radius:0.5rem; background:#16a34a; color:white; cursor:pointer; }
+    .pagination button:disabled { background:#ccc; cursor:default; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -48,6 +51,8 @@
       const [selected, setSelected] = React.useState("すべて");
       const [query, setQuery] = React.useState("");
       const [selectedTag, setSelectedTag] = React.useState("");
+      const [page, setPage] = React.useState(1);
+      const itemsPerPage = 10;
 
       React.useEffect(() => {
         fetch("rules.json")
@@ -67,6 +72,16 @@
         const matchTag = selectedTag === "" || (rule.tags && rule.tags.includes(selectedTag));
         return matchCategory && matchQuery && matchTag;
       });
+
+      const totalPages = Math.ceil(filtered.length / itemsPerPage);
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const paginated = filtered.slice(start, end);
+
+      // ページ切替時に現在の条件に合わせてページ番号を調整
+      React.useEffect(() => {
+        setPage(1);
+      }, [query, selectedTag, selected]);
 
       return (
         <div>
@@ -101,10 +116,10 @@
             </div>
           )}
           <ul>
-            {filtered.length === 0 ? (
+            {paginated.length === 0 ? (
               <li className="no-results">❌ 該当するルールが見つかりません。</li>
             ) : (
-              filtered.map(rule => (
+              paginated.map(rule => (
                 <li key={rule.id}>
                   <a href={"rule-detail.html?id=" + rule.id}>
                     {highlightText(rule.name, query)}
@@ -118,6 +133,13 @@
               ))
             )}
           </ul>
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button disabled={page === 1} onClick={() => setPage(page - 1)}>◀ 前</button>
+              <span>{page} / {totalPages}</span>
+              <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>次 ▶</button>
+            </div>
+          )}
         </div>
       );
     }
