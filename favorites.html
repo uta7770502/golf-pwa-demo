@@ -11,12 +11,14 @@
     body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
     ul { list-style: none; padding: 0; margin: 0; }
-    li { padding: 1rem; border-bottom: 1px solid #ddd; }
-    li a { text-decoration: none; color: #16a34a; font-weight: bold; display:block; }
+    li { padding: 1rem; border-bottom: 1px solid #ddd; display:flex; justify-content:space-between; align-items:center; }
+    li a { text-decoration: none; color: #16a34a; font-weight: bold; flex:1; }
     input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
     mark { background: yellow; }
     .controls { margin:0.5rem 0; display:flex; gap:1rem; align-items:center; }
     select { padding:0.5rem; border-radius:0.5rem; }
+    button.remove { background:#fef2f2; border:1px solid #fca5a5; border-radius:0.5rem; padding:0.3rem 0.6rem; cursor:pointer; color:#b91c1c; }
+    button.remove:hover { background:#fee2e2; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -42,16 +44,28 @@
       const [sort, setSort] = React.useState("added");
 
       React.useEffect(() => {
+        loadFavorites();
+      }, []);
+
+      function loadFavorites() {
         const stored = JSON.parse(localStorage.getItem("favorites")) || [];
         fetch("rules.json")
           .then(res => res.json())
           .then(data => {
-            const favRules = stored.map(favId => data.find(r => r.id == favId)).filter(Boolean);
-            // 保存時の順序を保持するために index を持たせる
-            const ordered = favRules.map((r, i) => ({...r, order:i}));
-            setRules(ordered);
+            const favRules = stored.map((favId, i) => {
+              const rule = data.find(r => r.id == favId);
+              return rule ? {...rule, order:i} : null;
+            }).filter(Boolean);
+            setRules(favRules);
           });
-      }, []);
+      }
+
+      function removeFavorite(id) {
+        let stored = JSON.parse(localStorage.getItem("favorites")) || [];
+        stored = stored.filter(favId => favId !== id);
+        localStorage.setItem("favorites", JSON.stringify(stored));
+        loadFavorites();
+      }
 
       const filtered = rules.filter(rule => {
         const text = rule.name + rule.detail + rule.tip;
@@ -90,6 +104,7 @@
                   <a href={"rule-detail.html?id=" + rule.id}>
                     {highlightText(rule.name, query)}
                   </a>
+                  <button className="remove" onClick={() => removeFavorite(rule.id)}>⭐解除</button>
                 </li>
               ))
             )}
