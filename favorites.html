@@ -20,6 +20,8 @@
     button.remove { background:#fef2f2; border:1px solid #fca5a5; border-radius:0.5rem; padding:0.3rem 0.6rem; cursor:pointer; color:#b91c1c; }
     button.remove:hover { background:#fee2e2; }
     h3 { margin-top:1rem; background:#f0fdf4; padding:0.5rem; border-radius:0.3rem; }
+    .export-import { margin-top:1.5rem; display:flex; gap:1rem; }
+    .export-import button, .export-import input { padding:0.5rem 1rem; border-radius:0.5rem; border:1px solid #ccc; cursor:pointer; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -68,6 +70,34 @@
         loadFavorites();
       }
 
+      function exportFavorites() {
+        const favorites = localStorage.getItem("favorites") || "[]";
+        const blob = new Blob([favorites], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "favorites.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      function importFavorites(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const data = JSON.parse(event.target.result);
+            localStorage.setItem("favorites", JSON.stringify(data));
+            alert("お気に入りを復元しました！");
+            loadFavorites();
+          } catch {
+            alert("JSONの読み込みに失敗しました");
+          }
+        };
+        reader.readAsText(file);
+      }
+
       const filtered = rules.filter(rule => {
         const text = rule.name + rule.detail + rule.tip;
         return query === "" || text.includes(query);
@@ -80,7 +110,6 @@
         return a.order - b.order; // 追加順
       });
 
-      // カテゴリごとにグループ化
       const grouped = sorted.reduce((acc, rule) => {
         if (!acc[rule.category]) acc[rule.category] = [];
         acc[rule.category].push(rule);
@@ -122,6 +151,10 @@
               </div>
             ))
           )}
+          <div className="export-import">
+            <button onClick={exportFavorites}>⭐エクスポート</button>
+            <input type="file" accept="application/json" onChange={importFavorites} />
+          </div>
         </div>
       );
     }
