@@ -21,7 +21,8 @@
     "tags": [
       "一般"
     ],
-    "image": ""
+    "image": "",
+    "illustration": "images/bunker-diagram.png"
   },
   {
     "id": 3,
@@ -106,7 +107,8 @@
     ],
     "detail": "空振りは1打としてカウントされます。",
     "tip": "クラブがボールに触れなくても、ストロークの意思があれば1打です。",
-    "image": "images/whiff.png"
+    "image": "images/whiff.png",
+    "illustration": "images/whiff-diagram.png"
   },
   {
     "id": 103,
@@ -129,7 +131,8 @@
     ],
     "detail": "旗を立てたままパットしても罰はありません。ボールが旗に当たっても無罰です。",
     "tip": "2019年のルール改正で認められ、プレー速度向上に繋がりました。",
-    "image": "images/flagstick.png"
+    "image": "images/flagstick.png",
+    "illustration": "images/flagstick-diagram.png"
   },
   {
     "id": 105,
@@ -141,7 +144,8 @@
     ],
     "detail": "ボールがOBに出た場合、2打罰で元の位置から打ち直します。",
     "tip": "ローカルルールで前進4打（特設ティー）が設けられることもあります。",
-    "image": "images/ob.png"
+    "image": "images/ob.png",
+    "illustration": "images/ob-diagram.png"
   },
   {
     "id": 106,
