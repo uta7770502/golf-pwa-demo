@@ -21,7 +21,37 @@
       ul.suggestions li:last-child { border-bottom:none; }
       ul.suggestions a { color:#16a34a; text-decoration:none; }
     </style>
-  </head>
+  <style>
+.filter-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-section button {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #f2f8f2;
+  cursor: pointer;
+}
+
+.filter-section button:hover {
+  background: #d8efd8;
+}
+
+@media (max-width: 600px) {
+  .filter-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filter-section h3 {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
   <body>
     <header>ゴルフルール</header>
     <div id="root"></div>
