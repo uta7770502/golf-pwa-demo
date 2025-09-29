@@ -4,62 +4,59 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ルール詳細</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 0; padding: 1rem; }
+    body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
-    section { margin-top: 1.5rem; }
-    h2 { font-weight: bold; margin-bottom: 0.5rem; }
-    .card { border-radius: 0.5rem; padding: 1rem; background: #ecfdf5; }
-    button { background:#fef9c3; padding:1rem; border-radius:0.5rem; border:none; font-size:1rem; cursor:pointer; margin-top:1rem; }
+    .tags { margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .tags a { background:#e0f2fe; color:#0369a1; padding:0.3rem 0.6rem; border-radius:0.5rem; text-decoration:none; font-size:0.9rem; }
+    .tags a:hover { background:#bae6fd; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
 <body>
   <header>📘 ルール詳細</header>
-  <div id="content"></div>
-  <a class="back" href="rules.html">← ルール一覧へ戻る</a>
+  <div id="root"></div>
+  <a class="back" href="rules.html">← 一覧へ戻る</a>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+  <script type="text/babel">
+    function RuleDetail() {
+      const [rule, setRule] = React.useState(null);
 
-    fetch("rules.json")
-      .then(res => res.json())
-      .then(data => {
-        const rule = data.find(r => r.id == id);
-        const container = document.getElementById("content");
-
-        if(rule){
-          container.innerHTML = `
-            <section>
-              <h2>${rule.name}</h2>
-              <div class="card">${rule.answer}</div>
-            </section>
-            <section>
-              <h2>詳しい解説</h2>
-              <p>${rule.detail}</p>
-            </section>
-            <section>
-              <h2>ワンポイント豆知識</h2>
-              <p>${rule.tip}</p>
-            </section>
-            <button id="favBtn">⭐ このルールをお気に入りに追加</button>
-          `;
-
-          document.getElementById("favBtn").addEventListener("click", function() {
-            let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-            if(!favorites.includes(rule.id)){
-              favorites.push(rule.id);
-              localStorage.setItem("favorites", JSON.stringify(favorites));
-              alert("お気に入りに追加しました！");
-            } else {
-              alert("すでにお気に入りに入っています。");
-            }
+      React.useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const id = parseInt(params.get("id"));
+        fetch("rules.json")
+          .then(res => res.json())
+          .then(data => {
+            const found = data.find(r => r.id === id);
+            setRule(found);
           });
-        } else {
-          container.innerHTML = "<p>ルールが見つかりません。</p>";
-        }
-      });
+      }, []);
+
+      if (!rule) return <p>ルールが見つかりません。</p>;
+
+      return (
+        <div>
+          <h2>{rule.name}</h2>
+          <p><strong>回答:</strong> {rule.answer}</p>
+          <p><strong>解説:</strong> {rule.detail}</p>
+          <p><strong>豆知識:</strong> {rule.tip}</p>
+          {rule.tags && (
+            <div className="tags">
+              {rule.tags.map(tag => (
+                <a key={tag} href={"rules.html?tag=" + encodeURIComponent(tag)}>{tag}</a>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<RuleDetail />);
   </script>
 </body>
 </html>
