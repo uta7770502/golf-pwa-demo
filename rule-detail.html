@@ -10,21 +10,22 @@
   <style>
     body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
-    .tags { margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.5rem; }
-    .tags a { background:#e0f2fe; color:#0369a1; padding:0.3rem 0.6rem; border-radius:0.5rem; text-decoration:none; font-size:0.9rem; }
-    .tags a:hover { background:#bae6fd; }
-    .image img { max-width:100%; border-radius:0.5rem; margin:1rem 0; }
-    a.back { display: block; margin: 1rem 0; color: #16a34a; }
+    .container { padding:1rem; }
+    .tip { margin-top:1rem; font-size:0.9rem; color:#555; }
+    button { margin-top:1rem; padding:0.5rem 1rem; background:#facc15; border:none; border-radius:0.5rem; cursor:pointer; }
+    button:hover { background:#eab308; }
+    a.back { display:block; margin:1rem 0; color:#16a34a; }
   </style>
 </head>
 <body>
   <header>📘 ルール詳細</header>
   <div id="root"></div>
-  <a class="back" href="rules.html">← 一覧へ戻る</a>
+  <a class="back" href="rules.html">← ルール一覧へ戻る</a>
 
   <script type="text/babel">
     function RuleDetail() {
       const [rule, setRule] = React.useState(null);
+      const [isFavorite, setIsFavorite] = React.useState(false);
 
       React.useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -34,29 +35,43 @@
           .then(data => {
             const found = data.find(r => r.id === id);
             setRule(found);
+
+            // お気に入り状態を確認
+            const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+            setIsFavorite(favs.includes(id));
+
+            // 最近見たルールを保存
+            if (found) {
+              let recents = JSON.parse(localStorage.getItem("recentRules") || "[]");
+              recents = [found.id, ...recents.filter(rid => rid !== found.id)];
+              if (recents.length > 10) recents = recents.slice(0, 10);
+              localStorage.setItem("recentRules", JSON.stringify(recents));
+            }
           });
       }, []);
 
-      if (!rule) return <p>ルールが見つかりません。</p>;
+      function toggleFavorite() {
+        if (!rule) return;
+        let favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+        if (isFavorite) {
+          favs = favs.filter(f => f !== rule.id);
+        } else {
+          favs.push(rule.id);
+        }
+        localStorage.setItem("favorites", JSON.stringify(favs));
+        setIsFavorite(!isFavorite);
+      }
+
+      if (!rule) return <div>読み込み中...</div>;
 
       return (
-        <div>
+        <div className="container">
           <h2>{rule.name}</h2>
-          <p><strong>回答:</strong> {rule.answer}</p>
-          <p><strong>解説:</strong> {rule.detail}</p>
-          <p><strong>豆知識:</strong> {rule.tip}</p>
-          {rule.image && rule.image !== "" && (
-            <div className="image">
-              <img src={rule.image} alt={rule.name} />
-            </div>
-          )}
-          {rule.tags && (
-            <div className="tags">
-              {rule.tags.map(tag => (
-                <a key={tag} href={"rules.html?tag=" + encodeURIComponent(tag)}>{tag}</a>
-              ))}
-            </div>
-          )}
+          <p>{rule.detail}</p>
+          <div className="tip">💡 {rule.tip}</div>
+          <button onClick={toggleFavorite}>
+            {isFavorite ? "⭐ お気に入り解除" : "⭐ お気に入りに追加"}
+          </button>
         </div>
       );
     }
