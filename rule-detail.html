@@ -13,6 +13,7 @@
     .tags { margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.5rem; }
     .tags a { background:#e0f2fe; color:#0369a1; padding:0.3rem 0.6rem; border-radius:0.5rem; text-decoration:none; font-size:0.9rem; }
     .tags a:hover { background:#bae6fd; }
+    .image img { max-width:100%; border-radius:0.5rem; margin:1rem 0; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -44,6 +45,11 @@
           <p><strong>回答:</strong> {rule.answer}</p>
           <p><strong>解説:</strong> {rule.detail}</p>
           <p><strong>豆知識:</strong> {rule.tip}</p>
+          {rule.image && rule.image !== "" && (
+            <div className="image">
+              <img src={rule.image} alt={rule.name} />
+            </div>
+          )}
           {rule.tags && (
             <div className="tags">
               {rule.tags.map(tag => (
