@@ -3,39 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゴルフルールサイト</title>
+  <title>ゴルフルールナビ</title>
   <link rel="stylesheet" href="style.css?v=20250929">
 </head>
 <body>
   <header>
-    <h1>ゴルフルール検索</h1>
+    <h1>ゴルフルールナビ</h1>
   </header>
+
   <main>
-    <div class="search-container">
-      <input type="text" placeholder="ルールを検索..." id="searchBox">
+    <!-- 検索ボックス -->
+    <div class="search-box">
+      <input type="text" placeholder="ルールを検索..." id="searchInput">
     </div>
 
-    <div class="button-grid">
-      <a href="rules.html" class="btn yellow">ルール一覧 (2025最新ver.)</a>
-      <a href="category.html" class="btn green">カテゴリから探す</a>
-      <a href="bunker.html" class="btn yellow">バンカーのルール</a>
-      <a href="green.html" class="btn green">グリーン上のルール</a>
-      <a href="tee.html" class="btn yellow">ティーグラウンドのルール</a>
-      <a href="penalty.html" class="btn green">ペナルティエリア</a>
-      <a href="ob.html" class="btn yellow">OBの処置</a>
-      <a href="provisional.html" class="btn green">暫定球の処置</a>
-      <a href="unplayable.html" class="btn yellow">アンプレヤブル</a>
-      <a href="relief.html" class="btn green">救済の手順</a>
-      <a href="drop.html" class="btn yellow">ドロップの方法</a>
-      <a href="lostball.html" class="btn green">ロストボール</a>
-      <a href="readygolf.html" class="btn yellow">レディゴルフ</a>
-      <a href="order.html" class="btn green">プレーの順番</a>
-      <a href="pace.html" class="btn yellow">プレーファスト</a>
-      <a href="equipment.html" class="btn green">クラブ・用具</a>
-      <a href="marker.html" class="btn yellow">マーカーの役割</a>
-      <a href="scorecard.html" class="btn green">スコアカードの記入</a>
-      <a href="etiquette.html" class="btn yellow">ゴルフのエチケット</a>
-      <a href="quiz.html" class="btn green">ルールクイズ</a>
+    <!-- ルール一覧ボタン -->
+    <a href="rules.html" class="rule-button yellow">ルール一覧 (最新2025ver.)</a>
+
+    <!-- よく見るルール -->
+    <h2>よく見るルール</h2>
+    <div class="button-container">
+      <a href="#" class="rule-button green">OB</a>
+      <a href="#" class="rule-button yellow">バンカー</a>
+      <a href="#" class="rule-button green">池 (ウォーターハザード)</a>
+      <a href="#" class="rule-button yellow">ラフ</a>
+    </div>
+
+    <!-- カテゴリ -->
+    <h2>場所で探す</h2>
+    <div class="button-container">
+      <a href="#" class="rule-button green">ティーグラウンド</a>
+      <a href="#" class="rule-button yellow">フェアウェイ</a>
+      <a href="#" class="rule-button green">グリーン</a>
+      <a href="#" class="rule-button yellow">バンカー</a>
+    </div>
+
+    <h2>種類から探す</h2>
+    <div class="button-container">
+      <a href="#" class="rule-button green">ペナルティ</a>
+      <a href="#" class="rule-button yellow">救済</a>
+      <a href="#" class="rule-button green">プレーの順序</a>
+      <a href="#" class="rule-button yellow">その他</a>
     </div>
   </main>
 </body>

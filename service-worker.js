@@ -1,31 +1,18 @@
-const CACHE_NAME = "golf-rule-cache-v7";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/script.js"
-];
-
-self.addEventListener("install", event => {
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
+    caches.open('golf-rules-cache-v1').then(function(cache) {
+      return cache.addAll([
+        './index.html',
+        './rules.html',
+        './style.css'
+      ]);
     })
   );
 });
-
-self.addEventListener("fetch", event => {
+self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request).then(response => {
+    caches.match(event.request).then(function(response) {
       return response || fetch(event.request);
     })
-  );
-});
-
-self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
   );
 });
