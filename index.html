@@ -116,5 +116,16 @@
       const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<App />);
     </script>
-  </body>
+  
+<script>
+// カテゴリフィルターボタン処理
+document.querySelectorAll('.filter-section button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.getAttribute('data-category');
+    displayRules(rules.filter(rule => rule.category === category));
+  });
+});
+</script>
+
+</body>
 </html>
