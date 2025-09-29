@@ -10,12 +10,12 @@
     <style>
       body { font-family: system-ui, sans-serif; margin: 0; background: #fff; }
       header { background: #16a34a; color: #fff; padding: 1rem; text-align: center; font-weight: bold; }
-      button { cursor: pointer; border: none; }
-      .card { border-radius: 0.5rem; padding: 1rem; }
+      button { cursor: pointer; border: none; width: 100%; }
+      .card { border-radius: 0.5rem; padding: 1.2rem; text-align: center; font-size: 1.1rem; }
       .green { background: #ecfdf5; }
       .yellow { background: #fef9c3; }
-      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-      a { text-decoration: none; color: inherit; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      a { text-decoration: none; color: inherit; display: block; }
     </style>
   </head>
   <body>
@@ -52,7 +52,7 @@
         return (
           <main style={{ padding: "1rem" }}>
             <a href="category.html">
-              <button className="card yellow" style={{ width: "100%", marginBottom: "1rem", fontWeight: "bold" }}>
+              <button className="card yellow" style={{ marginBottom: "1rem", fontWeight: "bold" }}>
                 📑 ルール一覧（2025 最新ver.）
               </button>
             </a>
