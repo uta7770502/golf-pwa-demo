@@ -12,12 +12,13 @@
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
     ul { list-style: none; padding: 0; margin: 0; }
     li { padding: 1rem; border-bottom: 1px solid #ddd; }
-    li a { text-decoration: none; color: #16a34a; font-weight: bold; }
+    li a { text-decoration: none; color: #16a34a; font-weight: bold; display:block; }
     .categories { margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
     .categories button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
     .active { background:#16a34a; color:white; }
     input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
     mark { background: yellow; }
+    .excerpt { font-size:0.9rem; color:#555; margin-top:0.25rem; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -52,7 +53,8 @@
 
       const filtered = rules.filter(rule => {
         const matchCategory = selected === "すべて" || rule.category === selected;
-        const matchQuery = query === "" || rule.name.includes(query);
+        const text = rule.name + rule.answer + rule.detail + rule.tip;
+        const matchQuery = query === "" || text.includes(query);
         return matchCategory && matchQuery;
       });
 
@@ -78,6 +80,11 @@
                 <a href={"rule-detail.html?id=" + rule.id}>
                   {highlightText(rule.name, query)}
                 </a>
+                {query && (
+                  <div className="excerpt">
+                    {highlightText(rule.detail, query)}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
