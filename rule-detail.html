@@ -10,40 +10,62 @@
     section { margin-top: 1.5rem; }
     h2 { font-weight: bold; margin-bottom: 0.5rem; }
     .card { border-radius: 0.5rem; padding: 1rem; background: #ecfdf5; }
-    button { background:#fef9c3; padding:1rem; border-radius:0.5rem; border:none; font-size:1rem; cursor:pointer; }
+    button { background:#fef9c3; padding:1rem; border-radius:0.5rem; border:none; font-size:1rem; cursor:pointer; margin-top:1rem; }
+    a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
 <body>
   <header>📘 ルール詳細</header>
-  <section>
-    <h2>簡単な答え</h2>
-    <div class="card">いいえ、バンカー内でクラブを砂につけてはいけません。</div>
-  </section>
-  <section>
-    <h2>詳しい解説</h2>
-    <p>ゴルフ規則12.2bに基づき、バンカーではストローク前にクラブを砂に触れることは禁止されています。ただし石や枝を取り除く行為は認められています。</p>
-  </section>
-  <section>
-    <h2>ワンポイント豆知識</h2>
-    <p>練習スイングで砂に触れてもペナルティとなるので注意しましょう。</p>
-  </section>
-  <section>
-    <button id="favBtn">⭐ このルールをお気に入りに追加</button>
-  </section>
-  <a href="category.html">← カテゴリ一覧へ戻る</a>
+  <div id="content"></div>
+  <a class="back" href="rules.html">← ルール一覧へ戻る</a>
 
   <script>
-    document.getElementById("favBtn").addEventListener("click", function() {
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      const rule = "バンカーでクラブを砂につけていい？"; 
-      if (!favorites.includes(rule)) {
-        favorites.push(rule);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-        alert("お気に入りに追加しました！");
-      } else {
-        alert("すでにお気に入りに入っています。");
-      }
-    });
+    const rulesData = {
+      1: {name: "ティーイングエリアでのルール", answer: "ティーマーカー内で打たなければならない。", detail: "ティーマーカーの外から打つと2打罰。", tip: "ティーの位置をよく確認しましょう。"},
+      2: {name: "フェアウェイでのルール", answer: "ボールはあるがままにプレーする。", detail: "改善のために地面をならしたりしてはいけない。", tip: "芝の状態を活かすのも技術です。"},
+      3: {name: "ラフでのルール", answer: "草を押し倒してはならない。", detail: "クラブで押し倒すと2打罰。", tip: "ラフからはロフトを使いましょう。"},
+      4: {name: "バンカーでクラブを砂につけていい？", answer: "いいえ、打つ前にクラブを砂につけてはいけません。", detail: "ゴルフ規則12.2bに基づき禁止されています。", tip: "練習スイングで砂に触れてもペナルティです。"},
+      5: {name: "グリーンでのルール", answer: "ボールマークは修復できる。", detail: "グリーン上の損傷は修復可能。", tip: "プレーファストを意識しましょう。"},
+      6: {name: "OBのルール", answer: "1打罰で元の場所から打ち直し。", detail: "ホワイト杭の外に出たらOB。", tip: "プレー前に特設ティーの有無を確認。"},
+      7: {name: "旗を抜いていい？", answer: "はい、抜いてもそのままでもOK。", detail: "プレーヤーの選択。旗に当たっても無罰。", tip: "風の影響も考慮しましょう。"}
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const rule = rulesData[id];
+
+    const container = document.getElementById("content");
+
+    if(rule){
+      container.innerHTML = `
+        <section>
+          <h2>${rule.name}</h2>
+          <div class="card">${rule.answer}</div>
+        </section>
+        <section>
+          <h2>詳しい解説</h2>
+          <p>${rule.detail}</p>
+        </section>
+        <section>
+          <h2>ワンポイント豆知識</h2>
+          <p>${rule.tip}</p>
+        </section>
+        <button id="favBtn">⭐ このルールをお気に入りに追加</button>
+      `;
+
+      document.getElementById("favBtn").addEventListener("click", function() {
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        if(!favorites.find(r => r.id == id)){
+          favorites.push({id: id, name: rule.name});
+          localStorage.setItem("favorites", JSON.stringify(favorites));
+          alert("お気に入りに追加しました！");
+        } else {
+          alert("すでにお気に入りに入っています。");
+        }
+      });
+    } else {
+      container.innerHTML = "<p>ルールが見つかりません。</p>";
+    }
   </script>
 </body>
 </html>
