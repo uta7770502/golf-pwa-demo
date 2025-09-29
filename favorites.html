@@ -21,21 +21,27 @@
   <div id="root"></div>
   <a href="index.html">← トップへ戻る</a>
   <script type="text/babel">
-    const favorites = [
-      "OBのルール",
-      "バンカーでクラブを砂につけていい？",
-      "旗を抜いていい？",
-      "グリーン上でマークの仕方"
-    ];
     function Favorites() {
+      const [rules, setRules] = React.useState([]);
+
+      React.useEffect(() => {
+        const stored = JSON.parse(localStorage.getItem("favorites")) || [];
+        setRules(stored);
+      }, []);
+
       return (
         <ul>
-          {favorites.map((rule, i) => (
-            <li key={i}><span>⭐</span>{rule}</li>
-          ))}
+          {rules.length === 0 ? (
+            <li>お気に入りはまだありません。</li>
+          ) : (
+            rules.map((rule, i) => (
+              <li key={i}><span>⭐</span>{rule}</li>
+            ))
+          )}
         </ul>
       );
     }
+
     const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<Favorites />);
   </script>

@@ -10,6 +10,7 @@
     section { margin-top: 1.5rem; }
     h2 { font-weight: bold; margin-bottom: 0.5rem; }
     .card { border-radius: 0.5rem; padding: 1rem; background: #ecfdf5; }
+    button { background:#fef9c3; padding:1rem; border-radius:0.5rem; border:none; font-size:1rem; cursor:pointer; }
   </style>
 </head>
 <body>
@@ -26,6 +27,23 @@
     <h2>ワンポイント豆知識</h2>
     <p>練習スイングで砂に触れてもペナルティとなるので注意しましょう。</p>
   </section>
+  <section>
+    <button id="favBtn">⭐ このルールをお気に入りに追加</button>
+  </section>
   <a href="category.html">← カテゴリ一覧へ戻る</a>
+
+  <script>
+    document.getElementById("favBtn").addEventListener("click", function() {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const rule = "バンカーでクラブを砂につけていい？"; 
+      if (!favorites.includes(rule)) {
+        favorites.push(rule);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        alert("お気に入りに追加しました！");
+      } else {
+        alert("すでにお気に入りに入っています。");
+      }
+    });
+  </script>
 </body>
 </html>
