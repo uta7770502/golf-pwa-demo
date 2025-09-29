@@ -8,21 +8,35 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 0; }
+    body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
     ul { list-style: none; padding: 0; margin: 0; }
     li { padding: 1rem; border-bottom: 1px solid #ddd; }
-    li a { text-decoration: none; color: #16a34a; font-weight: bold; }
-    a.back { display: block; margin: 1rem; color: #16a34a; }
+    li a { text-decoration: none; color: #16a34a; font-weight: bold; display:block; }
+    input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
+    mark { background: yellow; }
+    a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
 <body>
   <header>⭐ お気に入りルール</header>
   <div id="root"></div>
   <a class="back" href="index.html">← トップへ戻る</a>
+
   <script type="text/babel">
+    function highlightText(text, query) {
+      if (!query) return text;
+      const parts = text.split(new RegExp(`(${query})`, "gi"));
+      return parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase()
+          ? <mark key={i}>{part}</mark>
+          : part
+      );
+    }
+
     function Favorites() {
       const [rules, setRules] = React.useState([]);
+      const [query, setQuery] = React.useState("");
 
       React.useEffect(() => {
         const stored = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -34,16 +48,34 @@
           });
       }, []);
 
+      const filtered = rules.filter(rule => {
+        const text = rule.name + rule.detail + rule.tip;
+        return query === "" || text.includes(query);
+      });
+
       return (
-        <ul>
-          {rules.length === 0 ? (
-            <li>お気に入りはまだありません。</li>
-          ) : (
-            rules.map((rule, i) => (
-              <li key={i}><a href={"rule-detail.html?id=" + rule.id}>{rule.name}</a></li>
-            ))
-          )}
-        </ul>
+        <div>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="お気に入りを検索..."
+            className="search"
+          />
+          <ul>
+            {filtered.length === 0 ? (
+              <li>お気に入りはまだありません。</li>
+            ) : (
+              filtered.map((rule) => (
+                <li key={rule.id}>
+                  <a href={"rule-detail.html?id=" + rule.id}>
+                    {highlightText(rule.name, query)}
+                  </a>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
       );
     }
 
