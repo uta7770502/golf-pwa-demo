@@ -13,8 +13,8 @@
     ul { list-style: none; padding: 0; margin: 0; }
     li { padding: 1rem; border-bottom: 1px solid #ddd; }
     li a { text-decoration: none; color: #16a34a; font-weight: bold; display:block; }
-    .categories { margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
-    .categories button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
+    .categories, .tags { margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .categories button, .tags button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
     .active { background:#16a34a; color:white; }
     input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
     mark { background: yellow; }
@@ -29,6 +29,7 @@
 
   <script type="text/babel">
     const categories = ["すべて", "ティー", "フェアウェイ", "ラフ", "バンカー", "グリーン", "OB", "ペナルティ"];
+    const tagsList = ["OB", "ペナルティ", "バンカー", "砂", "空振り", "一般"];
 
     function highlightText(text, query) {
       if (!query) return text;
@@ -44,6 +45,7 @@
       const [rules, setRules] = React.useState([]);
       const [selected, setSelected] = React.useState("すべて");
       const [query, setQuery] = React.useState("");
+      const [selectedTag, setSelectedTag] = React.useState("");
 
       React.useEffect(() => {
         fetch("rules.json")
@@ -55,7 +57,8 @@
         const matchCategory = selected === "すべて" || rule.category === selected;
         const text = rule.name + rule.answer + rule.detail + rule.tip;
         const matchQuery = query === "" || text.includes(query);
-        return matchCategory && matchQuery;
+        const matchTag = selectedTag === "" || (rule.tags && rule.tags.includes(selectedTag));
+        return matchCategory && matchQuery && matchTag;
       });
 
       return (
@@ -73,6 +76,14 @@
                 className={selected === cat ? "active" : ""}
                 onClick={() => setSelected(cat)}>{cat}</button>
             ))}
+          </div>
+          <div className="tags">
+            {tagsList.map(tag => (
+              <button key={tag}
+                className={selectedTag === tag ? "active" : ""}
+                onClick={() => setSelectedTag(tag)}>{tag}</button>
+            ))}
+            <button onClick={() => setSelectedTag("")}>リセット</button>
           </div>
           <ul>
             {filtered.map(rule => (
