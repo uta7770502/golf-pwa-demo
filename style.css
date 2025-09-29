@@ -1,54 +1,50 @@
-
 body {
-  font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #fff;
-  color: #333;
+  text-align: center;
 }
 header {
-  padding: 20px;
-  text-align: center;
-}
-h1 {
-  font-size: 20px;
-  margin-bottom: 5px;
-}
-.search-box {
-  text-align: center;
-  margin: 10px;
-}
-input[type="text"] {
+  background: #2c3e50;
+  color: white;
   padding: 10px;
+}
+.search-container {
+  margin: 15px;
+}
+.search-container input {
   width: 80%;
-  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
   border: 1px solid #ccc;
+  border-radius: 5px;
 }
-.section-title {
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+}
+.btn {
+  display: inline-block;
+  padding: 15px 20px;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin: 15px 10px 5px;
-}
-.button {
-  display: block;
-  width: 90%;
-  margin: 10px auto;
-  padding: 15px;
-  text-align: center;
-  font-size: 16px;
   text-decoration: none;
   border-radius: 8px;
-  border: none;
+  color: #333;
+  flex-grow: 0;
 }
-.btn-yellow {
-  background: #ffefb0;
-  color: #000;
-  font-weight: bold;
+.btn.yellow {
+  background: #f9e79f;
+  border: 2px solid #f1c40f;
 }
-.btn-green {
-  background: #d6f5d6;
-  color: #000;
+.btn.green {
+  background: #abebc6;
+  border: 2px solid #27ae60;
 }
-.btn-category {
-  background: #fef3c7;
-  color: #000;
+.btn:hover {
+  opacity: 0.85;
 }
