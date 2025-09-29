@@ -1,47 +1,56 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background: #fff;
   margin: 0;
   padding: 0;
+}
+.container {
+  width: 90%;
+  margin: auto;
   text-align: center;
+  padding: 20px;
 }
-header {
-  background: #006400;
-  color: #fff;
-  padding: 1em;
-}
-h1, h2 {
-  margin: 0.5em 0;
+h1 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
 }
 .search-box {
-  margin: 1em;
-}
-.search-box input {
   width: 90%;
-  padding: 0.8em;
+  padding: 10px;
   font-size: 1em;
+  margin-bottom: 20px;
 }
-.button-container, .rule-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 1em;
-}
-.rule-button {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 1.1em;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #000;
+.btn {
+  display: block;
+  padding: 15px;
+  margin: 10px auto;
+  font-size: 1.2em;
   font-weight: bold;
-  min-width: 120px;
-  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  width: 90%;
 }
-.rule-button.green {
-  background: #90EE90;
+.btn-green {
+  background-color: #66bb6a;
+  color: #fff;
 }
-.rule-button.yellow {
-  background: #FFD700;
+.btn-yellow {
+  background-color: #ffeb3b;
+  color: #333;
+}
+.rule-list {
+  list-style: none;
+  padding: 0;
+}
+.rule-list li {
+  margin: 12px 0;
+}
+.rule-list a {
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  border-radius: 6px;
+  background: #e0f7fa;
+  font-weight: bold;
+  color: #333;
 }
