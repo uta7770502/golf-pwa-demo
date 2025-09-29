@@ -11,7 +11,7 @@
     body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
     ul { list-style: none; padding: 0; margin: 0; }
-    li { padding: 1rem; border-bottom: 1px solid #ddd; display:flex; justify-content:space-between; align-items:center; }
+    li { padding: 0.5rem 0; display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid #eee; }
     li a { text-decoration: none; color: #16a34a; font-weight: bold; flex:1; }
     input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
     mark { background: yellow; }
@@ -19,6 +19,7 @@
     select { padding:0.5rem; border-radius:0.5rem; }
     button.remove { background:#fef2f2; border:1px solid #fca5a5; border-radius:0.5rem; padding:0.3rem 0.6rem; cursor:pointer; color:#b91c1c; }
     button.remove:hover { background:#fee2e2; }
+    h3 { margin-top:1rem; background:#f0fdf4; padding:0.5rem; border-radius:0.3rem; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -79,6 +80,13 @@
         return a.order - b.order; // 追加順
       });
 
+      // カテゴリごとにグループ化
+      const grouped = sorted.reduce((acc, rule) => {
+        if (!acc[rule.category]) acc[rule.category] = [];
+        acc[rule.category].push(rule);
+        return acc;
+      }, {});
+
       return (
         <div>
           <input
@@ -95,20 +103,25 @@
               <option value="name">名前順</option>
             </select>
           </div>
-          <ul>
-            {sorted.length === 0 ? (
-              <li>お気に入りはまだありません。</li>
-            ) : (
-              sorted.map((rule) => (
-                <li key={rule.id}>
-                  <a href={"rule-detail.html?id=" + rule.id}>
-                    {highlightText(rule.name, query)}
-                  </a>
-                  <button className="remove" onClick={() => removeFavorite(rule.id)}>⭐解除</button>
-                </li>
-              ))
-            )}
-          </ul>
+          {Object.keys(grouped).length === 0 ? (
+            <p>お気に入りはまだありません。</p>
+          ) : (
+            Object.keys(grouped).map(cat => (
+              <div key={cat}>
+                <h3>📂 {cat}</h3>
+                <ul>
+                  {grouped[cat].map((rule) => (
+                    <li key={rule.id}>
+                      <a href={"rule-detail.html?id=" + rule.id}>
+                        {highlightText(rule.name, query)}
+                      </a>
+                      <button className="remove" onClick={() => removeFavorite(rule.id)}>⭐解除</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          )}
         </div>
       );
     }
