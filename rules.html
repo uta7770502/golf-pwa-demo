@@ -51,6 +51,11 @@
         fetch("rules.json")
           .then(res => res.json())
           .then(data => setRules(data));
+
+        // URLパラメータから tag を初期設定
+        const params = new URLSearchParams(window.location.search);
+        const tagParam = params.get("tag");
+        if (tagParam) setSelectedTag(tagParam);
       }, []);
 
       const filtered = rules.filter(rule => {
