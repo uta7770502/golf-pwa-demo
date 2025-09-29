@@ -16,6 +16,10 @@
       .yellow { background: #fef9c3; }
       .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
       a { text-decoration: none; color: inherit; display: block; }
+      ul.suggestions { list-style:none; padding:0; margin:0.5rem 0 0 0; border:1px solid #ccc; border-radius:0.5rem; background:#fff; }
+      ul.suggestions li { padding:0.5rem; border-bottom:1px solid #eee; }
+      ul.suggestions li:last-child { border-bottom:none; }
+      ul.suggestions a { color:#16a34a; text-decoration:none; }
     </style>
   </head>
   <body>
@@ -23,25 +27,23 @@
     <div id="root"></div>
 
     <script type="text/babel">
-      const rules = [
-        "バンカーでクラブを砂につけていい？",
-        "旗を抜いていい？",
-        "OBのルール",
-        "グリーン上でマークの仕方",
-        "空振りの扱い",
-        "プレー順のルール",
-      ];
-
       function App() {
         const [query, setQuery] = React.useState("");
         const [suggestions, setSuggestions] = React.useState([]);
+        const [rules, setRules] = React.useState([]);
+
+        React.useEffect(() => {
+          fetch("rules.json")
+            .then(res => res.json())
+            .then(data => setRules(data));
+        }, []);
 
         const handleChange = (e) => {
           const value = e.target.value;
           setQuery(value);
           if (value.length > 0) {
             const filtered = rules.filter((rule) =>
-              rule.toLowerCase().includes(value.toLowerCase())
+              rule.name.toLowerCase().includes(value.toLowerCase())
             );
             setSuggestions(filtered);
           } else {
@@ -66,9 +68,11 @@
                 style={{ width: "100%", border: "1px solid #ccc", borderRadius: "0.5rem", padding: "0.75rem" }}
               />
               {suggestions.length > 0 && (
-                <ul style={{ marginTop: "0.5rem", border: "1px solid #ccc", borderRadius: "0.5rem", background: "#fff" }}>
-                  {suggestions.map((s, i) => (
-                    <li key={i} style={{ padding: "0.5rem", cursor: "pointer" }}>{s}</li>
+                <ul className="suggestions">
+                  {suggestions.map((s) => (
+                    <li key={s.id}>
+                      <a href={"rule-detail.html?id=" + s.id}>{s.name}</a>
+                    </li>
                   ))}
                 </ul>
               )}
@@ -76,19 +80,19 @@
 
             <section style={{ marginTop: "1.5rem" }}>
               <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>⭐ よく見るルール</h2>
-              <a href="rule-detail.html">
-                <div className="card green">バンカーでクラブを砂につけていい？旗を抜いていい？</div>
+              <a href="rule-detail.html?id=4">
+                <div className="card green">バンカーでクラブを砂につけていい？</div>
               </a>
             </section>
 
             <section style={{ marginTop: "1.5rem" }}>
               <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>🌱 場所で探す</h2>
               <div className="grid">
-                <a href="rules.html"><button className="card green">OB</button></a>
+                <a href="rules.html"><button className="card green">ティー</button></a>
                 <a href="rules.html"><button className="card green">フェアウェイ</button></a>
                 <a href="rules.html"><button className="card green">ラフ</button></a>
                 <a href="rules.html"><button className="card green">グリーン</button></a>
-                <a href="rules.html"><button className="card green" style={{ gridColumn: "span 2" }}>ウォーターハザード</button></a>
+                <a href="rules.html"><button className="card green" style={{ gridColumn: "span 2" }}>バンカー</button></a>
               </div>
             </section>
 
