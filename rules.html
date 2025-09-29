@@ -11,15 +11,17 @@
     body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
     header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
     ul { list-style: none; padding: 0; margin: 0; }
-    li { padding: 1rem; border-bottom: 1px solid #ddd; }
-    li a { text-decoration: none; color: #16a34a; font-weight: bold; display:block; }
+    li { padding: 1rem; border-bottom: 1px solid #ddd; display:flex; gap:0.5rem; align-items:flex-start; }
+    li a { text-decoration: none; color: #16a34a; font-weight: bold; display:flex; gap:0.5rem; flex:1; }
+    .thumb { width:60px; height:60px; object-fit:cover; border-radius:0.5rem; flex-shrink:0; }
+    .text { flex:1; }
     .categories, .tags { margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
     .categories button, .tags button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
     .active { background:#16a34a; color:white; }
     input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
     .search-condition { font-size:0.9rem; color:#555; margin:0.5rem 0; }
     mark { background: yellow; }
-    .excerpt { font-size:0.9rem; color:#555; margin-top:0.25rem; }
+    .excerpt { font-size:0.9rem; color:#555; margin-top:0.25rem; font-weight:normal; }
     .no-results { padding:1rem; color:#b91c1c; font-weight:bold; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
     .loading { text-align:center; padding:1rem; color:#555; }
@@ -56,7 +58,6 @@
           .then(res => res.json())
           .then(data => setRules(data));
 
-        // URLパラメータから tag を初期設定
         const params = new URLSearchParams(window.location.search);
         const tagParam = params.get("tag");
         if (tagParam) setSelectedTag(tagParam);
@@ -125,13 +126,18 @@
               visibleRules.map(rule => (
                 <li key={rule.id}>
                   <a href={"rule-detail.html?id=" + rule.id}>
-                    {highlightText(rule.name, query)}
-                  </a>
-                  {query && (
-                    <div className="excerpt">
-                      {highlightText(rule.detail, query)}
+                    {rule.image && rule.image !== "" && (
+                      <img src={rule.image} alt={rule.name} className="thumb" />
+                    )}
+                    <div className="text">
+                      <div>{highlightText(rule.name, query)}</div>
+                      {query && (
+                        <div className="excerpt">
+                          {highlightText(rule.detail, query)}
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </a>
                 </li>
               ))
             )}
