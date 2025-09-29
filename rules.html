@@ -17,6 +17,7 @@
     .categories button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
     .active { background:#16a34a; color:white; }
     input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
+    mark { background: yellow; }
     a.back { display: block; margin: 1rem 0; color: #16a34a; }
   </style>
 </head>
@@ -27,6 +28,16 @@
 
   <script type="text/babel">
     const categories = ["すべて", "ティー", "フェアウェイ", "ラフ", "バンカー", "グリーン", "OB", "ペナルティ"];
+
+    function highlightText(text, query) {
+      if (!query) return text;
+      const parts = text.split(new RegExp(`(${query})`, "gi"));
+      return parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase()
+          ? <mark key={i}>{part}</mark>
+          : part
+      );
+    }
 
     function Rules() {
       const [rules, setRules] = React.useState([]);
@@ -63,7 +74,11 @@
           </div>
           <ul>
             {filtered.map(rule => (
-              <li key={rule.id}><a href={"rule-detail.html?id=" + rule.id}>{rule.name}</a></li>
+              <li key={rule.id}>
+                <a href={"rule-detail.html?id=" + rule.id}>
+                  {highlightText(rule.name, query)}
+                </a>
+              </li>
             ))}
           </ul>
         </div>
