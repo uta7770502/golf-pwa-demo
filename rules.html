@@ -22,20 +22,18 @@
   <a class="back" href="index.html">← トップへ戻る</a>
 
   <script type="text/babel">
-    const rulesData = [
-      {id: 1, name: "ティーイングエリアでのルール"},
-      {id: 2, name: "フェアウェイでのルール"},
-      {id: 3, name: "ラフでのルール"},
-      {id: 4, name: "バンカーでクラブを砂につけていい？"},
-      {id: 5, name: "グリーンでのルール"},
-      {id: 6, name: "OBのルール"},
-      {id: 7, name: "旗を抜いていい？"}
-    ];
-
     function Rules() {
+      const [rules, setRules] = React.useState([]);
+
+      React.useEffect(() => {
+        fetch("rules.json")
+          .then(res => res.json())
+          .then(data => setRules(data));
+      }, []);
+
       return (
         <ul>
-          {rulesData.map(rule => (
+          {rules.map(rule => (
             <li key={rule.id}><a href={"rule-detail.html?id=" + rule.id}>{rule.name}</a></li>
           ))}
         </ul>

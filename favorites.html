@@ -26,7 +26,12 @@
 
       React.useEffect(() => {
         const stored = JSON.parse(localStorage.getItem("favorites")) || [];
-        setRules(stored);
+        fetch("rules.json")
+          .then(res => res.json())
+          .then(data => {
+            const favRules = stored.map(favId => data.find(r => r.id == favId)).filter(Boolean);
+            setRules(favRules);
+          });
       }, []);
 
       return (
