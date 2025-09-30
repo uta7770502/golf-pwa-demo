@@ -1,110 +1,106 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ゴルフルール</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; }
-    header { background: #16a34a; color: #fff; padding: 1rem; text-align: center; font-weight: bold; }
-    h2 { margin: 1rem 0 0.5rem; padding-left: 1rem; font-size: 1.1rem; }
-    .button-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; padding: 0 1rem; }
-    .rule-button {
-      background: #f0f8f5;
-      border: 1px solid #cce0cc;
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; background: #fff; }
+    header { background: #16a34a; color: #fff; padding: 0.8rem; text-align: center; font-weight: bold; }
+    main { padding: 0.5rem; }
+
+    h2 { font-size: 1rem; margin: 0.8rem 0 0.3rem; }
+
+    .btn-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .btn-grid a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #f2f9f2;
+      border: 1px solid #d9e9d9;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #064e3b;
+      white-space: nowrap;
+      flex-grow: 0;
+    }
+    .btn-grid a:hover { background: #e5f4e6; }
+
+    .section { margin-bottom: 0.6rem; }
+
+    .link-card {
+      display: block;
+      background: #fef9c3;
       border-radius: 8px;
       padding: 12px;
-      font-size: 15px;
+      margin-top: 8px;
       text-align: center;
-      cursor: pointer;
-      font-weight: 600;
+      font-weight: bold;
+      text-decoration: none;
+      color: #000;
     }
-    .rule-button:hover { background: #dff0e0; }
-    .search-box { display: flex; margin: 1rem; }
-    .search-box input {
-      flex: 1; padding: 12px; border: 1px solid #ccc;
-      border-radius: 6px 0 0 6px; font-size: 15px;
-    }
-    .search-box button {
-      padding: 12px; border: 1px solid #ccc;
-      background: #e0f7e0; border-radius: 0 6px 6px 0;
-      cursor: pointer;
-    }
-    #suggestions {
-      margin: 0 1rem; border: 1px solid #ccc; border-radius: 6px;
-      background: #fff; max-height: 200px; overflow-y: auto;
-      display: none; position: absolute; z-index: 1000; width: calc(100% - 2rem);
-    }
-    #suggestions div { padding: 10px; cursor: pointer; }
-    #suggestions div:hover { background: #f0f0f0; }
   </style>
 </head>
 <body>
-<header>ゴルフルール</header>
+  <header>ゴルフルール</header>
+  <main>
+    <section class="section">
+      <h2>ルールを検索</h2>
+      <input type="search" placeholder="キーワードで検索（例：OB、バンカー）" style="width:75%;padding:10px;border:1px solid #ccc;border-radius:6px;">
+      <button style="padding:10px;border:none;background:#e8f5e8;border-radius:6px;">🎤</button>
+    </section>
 
-<div class="search-box">
-  <input type="text" id="searchInput" placeholder="キーワードで検索（例：OB、バンカー）" oninput="showSuggestions(this.value)">
-  <button>🔍</button>
-</div>
-<div id="suggestions"></div>
+    <section class="section">
+      <h2>人気のキーワード</h2>
+      <div class="btn-grid">
+        <a href="rules.html?cat=OB">OB</a>
+        <a href="rules.html?cat=バンカー">バンカー</a>
+        <a href="rules.html?cat=暫定球">暫定球</a>
+        <a href="rules.html?cat=杭">杭</a>
+        <a href="rules.html?cat=誤球">誤球</a>
+        <a href="rules.html?cat=グリーン">グリーン</a>
+        <a href="rules.html?cat=赤杭">赤杭</a>
+        <a href="rules.html?cat=青杭">青杭</a>
+        <a href="rules.html?cat=ロストボール">ロストボール</a>
+        <a href="rules.html?cat=グリーンマーク">グリーンマーク</a>
+        <a href="rules.html?cat=ティー">ティー</a>
+      </div>
+    </section>
 
-<h2>人気のキーワード</h2>
-<div class="button-container">
-  <div class="rule-button" onclick="location.href='rules.html?cat=OB'">OB</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=バンカー'">バンカー</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=暫定球'">暫定球</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=杭'">杭</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=誤球'">誤球</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=グリーン'">グリーン</div>
-</div>
+    <section class="section">
+      <h2>場所で探す</h2>
+      <div class="btn-grid">
+        <a href="rules.html?cat=ティー">ティー</a>
+        <a href="rules.html?cat=フェアウェイ">フェアウェイ</a>
+        <a href="rules.html?cat=ラフ">ラフ</a>
+        <a href="rules.html?cat=グリーン">グリーン</a>
+        <a href="rules.html?cat=バンカー">バンカー</a>
+      </div>
+    </section>
 
-<h2>場所で探す</h2>
-<div class="button-container">
-  <div class="rule-button" onclick="location.href='rules.html?cat=ティー'">ティー</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=フェアウェイ'">フェアウェイ</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=ラフ'">ラフ</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=グリーン'">グリーン</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=バンカー'">バンカー</div>
-</div>
+    <section class="section">
+      <h2>種類から探す</h2>
+      <div class="btn-grid">
+        <a href="rules.html?cat=OB">OB</a>
+        <a href="rules.html?cat=ペナルティ">ペナルティ</a>
+        <a href="rules.html?cat=プレー順">プレー順</a>
+        <a href="rules.html?cat=道具の扱い">道具の扱い</a>
+      </div>
+    </section>
 
-<h2>種類から探す</h2>
-<div class="button-container">
-  <div class="rule-button" onclick="location.href='rules.html?cat=OB'">OB</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=ペナルティ'">ペナルティ</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=プレー順'">プレー順</div>
-  <div class="rule-button" onclick="location.href='rules.html?cat=道具の扱い'">道具の扱い</div>
-</div>
+    <section class="section">
+      <h2>⭐ お気に入り</h2>
+      <a class="link-card" href="favorites.html">お気に入りルール一覧へ</a>
+    </section>
 
-<h2>⭐ お気に入り</h2>
-<div class="button-container">
-  <div class="rule-button" onclick="location.href='favorites.html'">お気に入り一覧を見る</div>
-</div>
-
-<script>
-async function loadRules() {
-  const response = await fetch("rules.json");
-  return await response.json();
-}
-
-async function showSuggestions(query) {
-  const suggestionsBox = document.getElementById("suggestions");
-  suggestionsBox.innerHTML = "";
-  if (!query) { suggestionsBox.style.display = "none"; return; }
-
-  const rules = await loadRules();
-  const matches = rules.filter(rule => rule.name.includes(query));
-  if (matches.length > 0) {
-    matches.forEach(rule => {
-      const div = document.createElement("div");
-      div.textContent = rule.name;
-      div.onclick = () => { location.href = "rule-detail.html?id=" + rule.id; };
-      suggestionsBox.appendChild(div);
-    });
-    suggestionsBox.style.display = "block";
-  } else {
-    suggestionsBox.style.display = "none";
-  }
-}
-</script>
+    <section class="section">
+      <a class="link-card" href="rules.html">📑 ルール一覧（2025 最新ver.）</a>
+    </section>
+  </main>
 </body>
 </html>
