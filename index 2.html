@@ -1,83 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ゴルフルール</title>
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 0; background: #fff; }
-    header { background: #16a34a; color: #fff; padding: 0.8rem; text-align: center; font-weight: bold; font-size: 18px; }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ゴルフルール</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 0; background: #fff; }
+      header { background: #16a34a; color: #fff; padding: 1rem; text-align: center; font-weight: bold; }
+      .home-block { margin: 16px 12px; }
+      .quick-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+      .quick-btn { display: block; text-decoration: none; text-align: center; padding: 14px 10px; border-radius: 14px; border: 1px solid #dfeee0; background: #f2f9f2; font-weight: 600; }
+      .quick-btn:hover { background: #e5f4e6; }
+    </style>
+  </head>
+  <body>
+    <header>ゴルフルール</header>
 
-    section { margin: 6px 8px; }
-    h2 { font-size: 15px; margin: 6px 0; }
+    <section id="popular-keywords" class="home-block">
+      <h2>人気のキーワード</h2>
+      <div class="quick-grid">
+        <a class="quick-btn" href="rules.html?cat=OB">OB</a>
+        <a class="quick-btn" href="rules.html?cat=赤杭">赤杭</a>
+        <a class="quick-btn" href="rules.html?cat=黄杭">黄杭</a>
+        <a class="quick-btn" href="rules.html?cat=青杭">青杭</a>
+        <a class="quick-btn" href="rules.html?cat=ロストボール">ロストボール</a>
+        <a class="quick-btn" href="rules.html?cat=暫定球">暫定球</a>
+        <a class="quick-btn" href="rules.html?cat=誤球">誤球</a>
+        <a class="quick-btn" href="rules.html?cat=グリーンマーク">グリーンマーク</a>
+        <a class="quick-btn" href="rules.html?cat=バンカー">バンカー</a>
+        <a class="quick-btn" href="rules.html?cat=ティー">ティー</a>
+      </div>
+    </section>
 
-    .search-wrap { display:flex; gap:6px; margin-bottom:6px; }
-    #search-box { flex:1; padding:10px; font-size:15px; border:1px solid #c9e3c9; border-radius:8px; background:#f6fbf6; }
-    #voice-btn { width:44px; border:none; border-radius:8px; font-size:18px; background:#e8f5e8; }
-
-    .btn-grid { display:flex; flex-wrap:wrap; gap:6px; }
-    .btn { flex:1 1 calc(50% - 6px); text-align:center; padding:14px 0; border-radius:10px;
-           background:#f2f9f2; border:1px solid #dfeee0; font-size:16px; font-weight:600; text-decoration:none; color:#000; }
-    .btn:hover { background:#e5f4e6; }
-
-    .wide-btn { display:block; width:100%; text-align:center; padding:16px; border-radius:10px; font-size:16px;
-                font-weight:bold; margin-top:8px; text-decoration:none; }
-
-    .fav-btn { background:#fff9c4; border:1px solid #f0e68c; }
-    .list-btn { background:#fff3cd; border:1px solid #ffeeba; }
-  </style>
-</head>
-<body>
-  <header>ゴルフルール</header>
-
-  <section>
-    <h2>ルールを検索</h2>
-    <div class="search-wrap">
-      <input id="search-box" type="search" placeholder="キーワードで検索（例：OB、バンカー）" />
-      <button id="voice-btn">🎤</button>
-    </div>
-  </section>
-
-  <section>
-    <h2>人気のキーワード</h2>
-    <div class="btn-grid">
-      <a href="rules.html?cat=OB" class="btn">OB</a>
-      <a href="rules.html?cat=バンカー" class="btn">バンカー</a>
-      <a href="rules.html?cat=暫定球" class="btn">暫定球</a>
-      <a href="rules.html?cat=杭" class="btn">杭</a>
-      <a href="rules.html?cat=誤球" class="btn">誤球</a>
-      <a href="rules.html?cat=グリーン" class="btn">グリーン</a>
-      <a href="rules.html?cat=赤杭" class="btn">赤杭</a>
-      <a href="rules.html?cat=青杭" class="btn">青杭</a>
-      <a href="rules.html?cat=ロストボール" class="btn">ロストボール</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>場所で探す</h2>
-    <div class="btn-grid">
-      <a href="rules.html?cat=ティー" class="btn">ティー</a>
-      <a href="rules.html?cat=フェアウェイ" class="btn">フェアウェイ</a>
-      <a href="rules.html?cat=ラフ" class="btn">ラフ</a>
-      <a href="rules.html?cat=グリーン" class="btn">グリーン</a>
-      <a href="rules.html?cat=バンカー" class="btn">バンカー</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>種類で探す</h2>
-    <div class="btn-grid">
-      <a href="rules.html?cat=OB" class="btn">OB</a>
-      <a href="rules.html?cat=ペナルティ" class="btn">ペナルティ</a>
-      <a href="rules.html?cat=プレー順" class="btn">プレー順</a>
-      <a href="rules.html?cat=道具の扱い" class="btn">道具の扱い</a>
-    </div>
-  </section>
-
-  <section>
-    <h2>⭐ お気に入り</h2>
-    <a href="favorites.html" class="wide-btn fav-btn">お気に入りルール一覧へ</a>
-    <a href="rules.html" class="wide-btn list-btn">📑 ルール一覧（2025 最新ver.）</a>
-  </section>
-</body>
+    <section id="quick-access" class="home-block">
+      <h2>すぐ探す</h2>
+      <div class="quick-grid">
+        <a class="quick-btn" href="rules.html?cat=OB">OB</a>
+        <a class="quick-btn" href="rules.html?cat=バンカー">バンカー</a>
+        <a class="quick-btn" href="rules.html?cat=グリーン">グリーン</a>
+        <a class="quick-btn" href="rules.html?cat=杭">杭</a>
+        <a class="quick-btn" href="rules.html?cat=暫定球">暫定球</a>
+        <a class="quick-btn" href="rules.html?cat=誤球">誤球</a>
+        <a class="quick-btn" href="rules.html?cat=ロストボール">ロスト</a>
+        <a class="quick-btn" href="rules.html?cat=マナー">マナー</a>
+      </div>
+    </section>
+  </body>
 </html>
