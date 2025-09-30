@@ -201,5 +201,26 @@
     })();
     </script>
     
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  try {
+    const params = new URLSearchParams(location.search);
+    const q = params.get("cat") || params.get("q");
+    if (q && typeof rules !== "undefined") {
+      const filtered = rules.filter(rule =>
+        rule.name.includes(q) ||
+        (rule.category && rule.category.includes(q)) ||
+        (rule.tags && rule.tags.some(t => t.includes(q)))
+      );
+      if (typeof displayRules === "function") {
+        displayRules(filtered);
+      }
+      const cond = document.getElementById("cond");
+      if (cond) cond.textContent = "検索条件: " + q;
+    }
+  } catch(e) { console.error(e); }
+});
+</script>
 </body>
 </html>
