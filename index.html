@@ -1,164 +1,54 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゴルフルール</title>
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; background: #fff; }
-    header { background: #16a34a; color: #fff; padding: 0.8rem; text-align: center; font-weight: bold; }
-    main { padding: 0.5rem; }
-
-    h2 { font-size: 1rem; margin: 0.8rem 0 0.3rem; }
-
-    .btn-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .btn-grid a {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 8px;
-      background: #f2f9f2;
-      border: 1px solid #d9e9d9;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      color: #064e3b;
-      white-space: nowrap;
-      flex-grow: 0;
-    }
-    .btn-grid a:hover { background: #e5f4e6; }
-
-    .section { margin-bottom: 0.6rem; }
-
-    .link-card {
-      display: block;
-      background: #fef9c3;
-      border-radius: 8px;
-      padding: 12px;
-      margin-top: 8px;
-      text-align: center;
-      font-weight: bold;
-      text-decoration: none;
-      color: #000;
-    }
-  
-/* === Mobile: enlarge green category buttons ~2.5x === */
-@media (max-width: 600px) {
-  .btn-grid a {
-    font-size: 22px;      /* ~14px * 1.58 => 22px */
-    padding: 16px 22px;   /* ~10px*1.6, 14px*1.6 */
-    border-radius: 12px;
-  }
-}
-
-
-/* === 3列固定・幅統一 === */
-.pill-section {
-  max-width: var(--content-max);
-  margin-inline: auto;
-}
-.pill-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.pill-grid a, .pill {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 76px;
-  padding: 10px 8px;
-  font-size: 22px;
-  border-radius: 12px;
-  background: #f0f9f5;
-  border: 1px solid #ccc;
-  text-align: center;
-  font-weight: 700;
-}
-
-</style>
-<style>
-.keyword-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-.keyword-buttons button {
-  width: 100%;
-  padding: 14px;
-  font-size: 1.1em;
-  background-color: #f0f9f5;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  text-align: center;
-}
-.section {
-  margin-bottom: 20px;
-}
-</style>
-
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <header>ゴルフルール</header>
+  <header class="header">ゴルフルール</header>
+
   <main>
-    <section class="section">
+    <section class="search-section">
       <h2>ルールを検索</h2>
-      <input type="search" placeholder="キーワードで検索（例：OB、バンカー）" style="width:75%;padding:10px;border:1px solid #ccc;border-radius:6px;">
-      <button style="padding:10px;border:none;background:#e8f5e8;border-radius:6px;">🎤</button>
+      <div class="search-box">
+        <input type="text" placeholder="キーワードで検索（例：OB、バンカー）">
+        <button class="mic-btn">🎤</button>
+      </div>
     </section>
 
-    <section class="section">
+    <section class="keyword-section">
       <h2>人気のキーワード</h2>
-      <div class="btn-grid">
-        <a href="rules.html?cat=OB">OB</a>
-        <a href="rules.html?cat=バンカー">バンカー</a>
-        <a href="rules.html?cat=暫定球">暫定球</a>
-        <a href="rules.html?cat=杭">杭</a>
-        <a href="rules.html?cat=誤球">誤球</a>
-        <a href="rules.html?cat=グリーン">グリーン</a>
-        <a href="rules.html?cat=赤杭">赤杭</a>
-        <a href="rules.html?cat=青杭">青杭</a>
-        <a href="rules.html?cat=ロストボール">ロストボール</a>
-        <a href="rules.html?cat=グリーンマーク">グリーンマーク</a>
-        <a href="rules.html?cat=ティー">ティー</a>
+      <div class="button-grid">
+        <button>OB</button>
+        <button>バンカー</button>
+        <button>暫定球</button>
+        <button>ロストボール</button>
+        <button>杭</button>
       </div>
     </section>
 
-    <section class="section">
+    <section class="place-section">
       <h2>場所で探す</h2>
-      <div class="btn-grid">
-        <a href="rules.html?cat=ティー">ティー</a>
-        <a href="rules.html?cat=フェアウェイ">フェアウェイ</a>
-        <a href="rules.html?cat=ラフ">ラフ</a>
-        <a href="rules.html?cat=グリーン">グリーン</a>
-        <a href="rules.html?cat=バンカー">バンカー</a>
+      <div class="button-grid">
+        <button>ティー</button>
+        <button>フェアウェイ</button>
+        <button>ラフ</button>
+        <button>グリーン</button>
+        <button>バンカー</button>
       </div>
     </section>
 
-    <section class="section">
+    <section class="type-section">
       <h2>種類から探す</h2>
-      <div class="btn-grid">
-        <a href="rules.html?cat=OB">OB</a>
-        <a href="rules.html?cat=ペナルティ">ペナルティ</a>
-        <a href="rules.html?cat=プレー順">プレー順</a>
-        <a href="rules.html?cat=道具の扱い">道具の扱い</a>
+      <div class="button-grid">
+        <button>OB</button>
+        <button>ペナルティ</button>
+        <button>プレー順</button>
+        <button>道具</button>
+        <button>カート</button>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>⭐ お気に入り</h2>
-      <a class="link-card" href="favorites.html">お気に入りルール一覧へ</a>
-    </section>
-
-    <section class="section">
-      <a class="link-card" href="rules.html">📑 ルール一覧（2025 最新ver.）</a>
     </section>
   </main>
 </body>
