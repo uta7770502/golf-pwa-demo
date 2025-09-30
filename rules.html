@@ -5,41 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ルール一覧</title>
   <style>
-    body{font-family:system-ui,sans-serif;margin:0;background:#fff;color:#111}
-    header{background:#16a34a;color:#fff;text-align:center;padding:1rem;font-weight:bold}
-    .container{padding:1rem}
-    .card{padding:1rem;margin:.5rem 0;background:#f2f9f2;border-radius:.5rem}
+    :root{
+      --green:#16a34a;
+      --pill:#eef6ee;
+      --pill-active:#cdeed1;
+      --card:#f2f9f2;
+      --text:#111;
+    }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,sans-serif;margin:0;background:#fff;color:var(--text)}
+    header{background:var(--green);color:#fff;text-align:center;padding:1rem;font-weight:bold}
+    .wrap{padding:12px}
+    .filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:10px 0 14px}
+    .filters button{padding:10px;border:none;border-radius:999px;background:var(--pill);cursor:pointer}
+    .filters button.active{background:var(--pill-active);font-weight:700}
+    .cond{margin:6px 2px 12px;color:#333}
+    .card{padding:14px;border-radius:10px;background:var(--card);margin:8px 0}
+    .muted{color:#666;font-size:.9rem}
   </style>
 </head>
 <body>
   <header>ルール一覧</header>
-  <div class="container">
-    <p id="cond"></p>
-    <div id="rules-list">読み込み中...</div>
+  <div class="wrap">
+    <div class="filters" id="filterBar">
+      <button data-tag="すべて" class="active">すべて</button>
+      <button data-tag="ティー">ティー</button>
+      <button data-tag="フェアウェイ">フェアウェイ</button>
+      <button data-tag="ラフ">ラフ</button>
+      <button data-tag="グリーン">グリーン</button>
+      <button data-tag="バンカー">バンカー</button>
+      <button data-tag="OB">OB</button>
+      <button data-tag="ペナルティ">ペナルティ</button>
+      <button data-tag="砂">砂</button>
+      <button data-tag="空振り">空振り</button>
+      <button data-tag="杭">杭</button>
+      <button data-tag="一般">一般</button>
+      <button data-tag="リセット">リセット</button>
+    </div>
+
+    <div id="cond" class="cond"></div>
+    <div id="list">読み込み中…</div>
   </div>
+
   <script>
-    document.addEventListener("DOMContentLoaded",()=>{
-      const p=new URLSearchParams(location.search);
-      const q=p.get("q");
-      const cond=document.getElementById("cond");
-      fetch("rules.json").then(r=>r.json()).then(rules=>{
-        let list=rules;
-        if(q){
-          cond.textContent="検索条件: "+q;
-          list=rules.filter(r=>r.name.includes(q)||(r.category||"").includes(q));
-        }else{
-          cond.textContent="";
-        }
-        const wrap=document.getElementById("rules-list");
-        wrap.innerHTML="";
-        if(list.length===0){wrap.innerHTML="<p>該当するルールはありません。</p>";return;}
-        list.forEach(r=>{
-          const div=document.createElement("div");
-          div.className="card";
-          div.textContent=r.name;
-          wrap.appendChild(div);
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => Array.from(document.querySelectorAll(sel));
+    let RULES = [];
+
+    function render(list){
+      const box = $("#list");
+      box.innerHTML = "";
+      if(!list.length){
+        box.innerHTML = '<p class="muted">該当するルールはありません。</p>';
+        return;
+      }
+      list.forEach(r=>{
+        const div = document.createElement("div");
+        div.className = "card";
+        div.textContent = r.name;
+        box.appendChild(div);
+      });
+      window.scrollTo({top:0,behavior:"instant"});
+    }
+
+    function applyTag(tag){
+      $$("#filterBar button").forEach(b=>b.classList.toggle("active", b.dataset.tag===tag || (tag==="すべて" && b.dataset.tag==="すべて")));
+      $("#cond").textContent = tag==="すべて" ? "" : `検索条件: ${tag}`;
+      if(tag==="リセット"){ $("#cond").textContent=""; render(RULES); return; }
+      if(tag==="すべて"){ render(RULES); return; }
+      const list = RULES.filter(r => (r.category||"").includes(tag) || r.name.includes(tag) || (r.tags||[]).some(t=>t.includes(tag)));
+      render(list);
+    }
+
+    function applyQuery(q){
+      if(!q){ render(RULES); return; }
+      // ボタンが存在するならアクティブ表示を合わせる
+      const btn = $(`#filterBar button[data-tag="${q}"]`);
+      if(btn){ $$("#filterBar button").forEach(b=>b.classList.remove("active")); btn.classList.add("active"); }
+      $("#cond").textContent = `検索条件: ${q}`;
+      const list = RULES.filter(r => r.name.includes(q) || (r.category||"").includes(q) || (r.tags||[]).some(t=>t.includes(q)));
+      render(list);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("rules.json").then(r=>r.json()).then(data=>{
+        RULES = data;
+        // 先に全件描画
+        render(RULES);
+
+        // フィルタクリック
+        $$("#filterBar button").forEach(b=>{
+          b.addEventListener("click", () => applyTag(b.dataset.tag));
         });
-        window.scrollTo({top:0,behavior:"instant"});
+
+        // URL ?q= の事前フィルター
+        const q = new URLSearchParams(location.search).get("q");
+        if(q){ applyQuery(q); }
+      }).catch(err=>{
+        $("#list").innerHTML = '<p class="muted">rules.json の読み込みに失敗しました。</p>';
+        console.error(err);
       });
     });
   </script>
