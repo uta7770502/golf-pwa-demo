@@ -83,6 +83,28 @@
   text-align: center;
 }
 
+
+/* === 3列ボタンをヘッダーや検索と同じ幅に固定 === */
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.btn-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+  font-size: 22px;
+  border-radius: 12px;
+  background: #f0f9f5;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
 </style>
 <style>
 .keyword-buttons {
