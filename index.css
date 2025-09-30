@@ -6,19 +6,3 @@ body {
 button {
   cursor: pointer;
 }
-
-
-.quick-btn {
-  display: inline-block;
-  padding: 16px 22px;
-  font-size: 18px;
-  border-radius: 12px;
-  background: #f0f8f0;
-  border: 1px solid #cde0cd;
-  margin: 6px;
-  text-align: center;
-  white-space: nowrap;
-}
-.quick-btn:hover {
-  background: #e0f0e0;
-}
