@@ -5,47 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ルール一覧</title>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 1rem; background: #fff; }
-    h1 { color: #16a34a; }
-    .card { padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem; background: #f2f9f2; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #fff; padding:1rem; }
+    header { background: #16a34a; color: #fff; padding: 1rem; text-align: center; font-weight: bold; }
+    .rule-card { border:1px solid #dfeee0; border-radius:8px; padding:12px; margin:8px 0; }
   </style>
 </head>
 <body>
-  <h1>ルール一覧</h1>
-  <div id="rules-list">読み込み中...</div>
+  <header>ルール一覧</header>
+  <h2 id="cat-title">全てのルール</h2>
+  <div id="rules-container"></div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const cat = params.get("cat");
-      const container = document.getElementById("rules-list");
-      fetch("rules.json")
-        .then(res => res.json())
-        .then(rules => {
-          if(cat){
-            const filtered = rules.filter(r => r.category.includes(cat) || r.name.includes(cat));
-            container.innerHTML = "";
-            if(filtered.length > 0){
-              filtered.forEach(r => {
-                const div = document.createElement("div");
-                div.className = "card";
-                div.textContent = r.name;
-                container.appendChild(div);
-              });
-            } else {
-              container.innerHTML = `<p>${cat} に関するルールは見つかりませんでした。</p>`;
-            }
-          } else {
-            container.innerHTML = "";
-            rules.forEach(r => {
-              const div = document.createElement("div");
-              div.className = "card";
-              div.textContent = r.name;
-              container.appendChild(div);
-            });
-          }
-        });
-    });
+    const rules = [
+      {id:1, name:"ティーイングエリアでのルール", category:"ティー"},
+      {id:2, name:"フェアウェイでのルール", category:"フェアウェイ"},
+      {id:3, name:"ラフでのルール", category:"ラフ"},
+      {id:4, name:"バンカーでクラブを砂につけていい？", category:"バンカー"},
+      {id:5, name:"グリーンでのルール", category:"グリーン"},
+      {id:6, name:"OBのルール", category:"OB"},
+      {id:7, name:"暫定球の扱い", category:"暫定球"},
+      {id:8, name:"誤球のケース", category:"誤球"},
+      {id:9, name:"ロストボールの処置", category:"ロストボール"},
+      {id:10, name:"マナー違反について", category:"マナー"},
+      {id:11, name:"杭の扱い", category:"杭"}
+    ];
+
+    function getParam(name){
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+
+    function render(){
+      const container = document.getElementById("rules-container");
+      const cat = getParam("cat");
+      if(cat){
+        document.getElementById("cat-title").textContent = cat + " のルール";
+        const filtered = rules.filter(r=>r.category===cat);
+        container.innerHTML = filtered.map(r=>'<div class="rule-card">'+r.name+'</div>').join("");
+      } else {
+        container.innerHTML = rules.map(r=>'<div class="rule-card">'+r.name+'</div>').join("");
+      }
+    }
+    document.addEventListener("DOMContentLoaded", render);
   </script>
 </body>
 </html>
