@@ -77,18 +77,53 @@
           </div>
           <div id="suggest-list" class="suggest"></div>
         </section>
-<section id="popular-keywords" class="home-block">
-      <h2>人気のキーワード</h2>
-      <div class="chips">
-        <a class="chip" href="rules.html?cat=赤杭">🔴 赤杭</a>
-        <a class="chip" href="rules.html?cat=黄杭">🟡 黄杭</a>
-        <a class="chip" href="rules.html?cat=青杭">🔵 青杭</a>
-        <a class="chip" href="rules.html?cat=白杭">⚪ 白杭</a>
-        <a class="chip" href="rules.html?cat=砂">砂</a>
-        <a class="chip" href="rules.html?cat=空振り">空振り</a>
-        <a class="chip" href="rules.html?cat=フェアウェイ">フェアウェイ</a>
-      </div>
+
+    <section id="popular-keywords" class="home-block">
+      <h2>⭐ 人気のキーワード</h2>
+      <div id="keyword-grid" class="quick-grid"></div>
     </section>
+
+    <script>
+      const keywords = [
+        {name:"OB", icon:"🚫"},
+        {name:"赤杭", icon:"🔴"},
+        {name:"黄杭", icon:"🟡"},
+        {name:"青杭", icon:"🔵"},
+        {name:"ロストボール", icon:"🔍"},
+        {name:"暫定球", icon:"⛳"},
+        {name:"誤球", icon:"❌"},
+        {name:"グリーンマーク", icon:"📍"},
+        {name:"バンカー", icon:"🏖️"},
+        {name:"ティー", icon:"🎯"}
+      ];
+
+      function getCount(key){
+        return parseInt(localStorage.getItem("kw_"+key) || "0");
+      }
+
+      function addCount(key){
+        const now = getCount(key) + 1;
+        localStorage.setItem("kw_"+key, now);
+      }
+
+      function renderKeywords(){
+        const sorted = [...keywords].sort((a,b)=> getCount(b.name) - getCount(a.name));
+        const grid = document.getElementById("keyword-grid");
+        if(!grid) return;
+        grid.innerHTML = "";
+        sorted.forEach(k=>{
+          const btn = document.createElement("a");
+          btn.className="quick-btn";
+          btn.href = "rules.html?cat="+encodeURIComponent(k.name);
+          btn.innerHTML = k.icon+" "+k.name;
+          btn.addEventListener("click", ()=> addCount(k.name));
+          grid.appendChild(btn);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", renderKeywords);
+    </script>
+    
         
     <header>ゴルフルール</header>
     <div id="root"></div>
