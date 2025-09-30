@@ -1,1 +1,51 @@
-<!DOCTYPE html><html lang='ja'><head><meta charset='utf-8'><title>ルール一覧</title></head><body><h1>ルール一覧ページ</h1></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ルール一覧</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1rem; background: #fff; }
+    h1 { color: #16a34a; }
+    .card { padding: 1rem; margin: 0.5rem 0; border-radius: 0.5rem; background: #f2f9f2; }
+  </style>
+</head>
+<body>
+  <h1>ルール一覧</h1>
+  <div id="rules-list">読み込み中...</div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get("cat");
+      const container = document.getElementById("rules-list");
+      fetch("rules.json")
+        .then(res => res.json())
+        .then(rules => {
+          if(cat){
+            const filtered = rules.filter(r => r.category.includes(cat) || r.name.includes(cat));
+            container.innerHTML = "";
+            if(filtered.length > 0){
+              filtered.forEach(r => {
+                const div = document.createElement("div");
+                div.className = "card";
+                div.textContent = r.name;
+                container.appendChild(div);
+              });
+            } else {
+              container.innerHTML = `<p>${cat} に関するルールは見つかりませんでした。</p>`;
+            }
+          } else {
+            container.innerHTML = "";
+            rules.forEach(r => {
+              const div = document.createElement("div");
+              div.className = "card";
+              div.textContent = r.name;
+              container.appendChild(div);
+            });
+          }
+        });
+    });
+  </script>
+</body>
+</html>
