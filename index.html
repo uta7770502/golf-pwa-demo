@@ -45,88 +45,34 @@
       color: #000;
     }
   
-/* === Mobile: enlarge green category buttons ~2.5x === */
-@media (max-width: 600px) {
-  .btn-grid a {
-    font-size: 22px;      /* ~14px * 1.58 => 22px */
-    padding: 16px 22px;   /* ~10px*1.6, 14px*1.6 */
-    border-radius: 12px;
-  }
+/* === 3列固定・幅統一 === */
+.pill-section {
+  max-width: var(--content-max);
+  margin-inline: auto;
 }
-
-
-/* === Always 3 columns fixed layout === */
-.btn-grid {
+.pill-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
-
-
-/* === 3列のボタンサイズを均等に統一 === */
-.btn-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 10px;
-}
-.btn-grid a {
+.pill-grid a, .pill {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 70px;
-  padding: 0 10px;
+  min-height: 76px;
+  padding: 10px 8px;
   font-size: 22px;
   border-radius: 12px;
   background: #f0f9f5;
   border: 1px solid #ccc;
   text-align: center;
-}
-
-
-/* === 3列ボタンをヘッダーや検索と同じ幅に固定 === */
-.btn-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-.btn-grid a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 70px;
-  font-size: 22px;
-  border-radius: 12px;
-  background: #f0f9f5;
-  border: 1px solid #ccc;
-  text-align: center;
+  font-weight: 700;
 }
 
 </style>
-<style>
-.keyword-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-.keyword-buttons button {
-  width: 100%;
-  padding: 14px;
-  font-size: 1.1em;
-  background-color: #f0f9f5;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  text-align: center;
-}
-.section {
-  margin-bottom: 20px;
-}
-</style>
-
 </head>
 <body>
   <header>ゴルフルール</header>
