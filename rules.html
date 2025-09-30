@@ -1,37 +1,179 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>ルール一覧</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ゴルフルール一覧</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
+    header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { padding: 1rem; border-bottom: 1px solid #ddd; display:flex; gap:0.5rem; align-items:flex-start; }
+    li a { text-decoration: none; color: #16a34a; font-weight: bold; display:flex; gap:0.5rem; flex:1; }
+    .thumb { width:60px; height:60px; object-fit:cover; border-radius:0.5rem; flex-shrink:0; }
+    .text { flex:1; }
+    .categories, .tags { margin:1rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .categories button, .tags button { padding:0.5rem 1rem; border-radius:0.5rem; border:none; cursor:pointer; }
+    .active { background:#16a34a; color:white; }
+    input.search { width:100%; padding:0.75rem; border:1px solid #ccc; border-radius:0.5rem; margin:0.5rem 0; }
+    .search-condition { font-size:0.9rem; color:#555; margin:0.5rem 0; }
+    mark { background: yellow; }
+    .excerpt { font-size:0.9rem; color:#555; margin-top:0.25rem; font-weight:normal; }
+    .no-results { padding:1rem; color:#b91c1c; font-weight:bold; }
+    a.back { display: block; margin: 1rem 0; color: #16a34a; }
+    .loading { text-align:center; padding:1rem; color:#555; }
+  </style>
 </head>
 <body>
-  <h1>ルール一覧</h1>
+  <header>📑 ゴルフルール一覧</header>
+  <div id="root"></div>
+  <a class="back" href="index.html">← トップへ戻る</a>
 
-  <section id="rule-temporary-ball">
-    <h2>暫定球のルール</h2>
-    <p>OBの可能性がある場合、暫定球を宣言してプレーすることができます。</p>
-  </section>
+  <script type="text/babel">
+    const categories = ["すべて", "ティー", "フェアウェイ", "ラフ", "バンカー", "グリーン", "OB", "ペナルティ"];
+    const tagsList = ["OB", "ペナルティ", "バンカー", "砂", "空振り", "一般"];
 
-  <section id="rule-ob">
-    <h2>OBのルール</h2>
-    <p>OBの場合は1打罰で前の位置から打ち直します。</p>
-  </section>
+    function highlightText(text, query) {
+      if (!query) return text;
+      const parts = text.split(new RegExp(`(${query})`, "gi"));
+      return parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase()
+          ? <mark key={i}>{part}</mark>
+          : part
+      );
+    }
 
-  <section id="rule-bunker">
-    <h2>バンカーのルール</h2>
-    <p>バンカー内ではクラブを砂につけてはいけません。</p>
-  </section>
+    function Rules() {
+      const [rules, setRules] = React.useState([]);
+      const [selected, setSelected] = React.useState("すべて");
+      const [query, setQuery] = React.useState("");
+      const [selectedTag, setSelectedTag] = React.useState("");
+      const [visibleCount, setVisibleCount] = React.useState(10);
 
-  <section id="rule-penalty">
-    <h2>ペナルティのルール</h2>
-    <p>違反行為にはペナルティが課されます。</p>
-  </section>
+      React.useEffect(() => {
+        fetch("rules.json")
+          .then(res => res.json())
+          .then(data => setRules(data));
 
-  <section id="rule-green">
-    <h2>グリーンのルール</h2>
-    <p>グリーン上では他のプレーヤーのラインを踏まないようにしましょう。</p>
-  </section>
+        const params = new URLSearchParams(window.location.search);
+        const tagParam = params.get("tag");
+        if (tagParam) setSelectedTag(tagParam);
+      }, []);
 
+      React.useEffect(() => {
+        const handleScroll = () => {
+          if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+            setVisibleCount(prev => Math.min(prev + 10, filtered.length));
+          }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+      });
+
+      const filtered = rules.filter(rule => {
+        const matchCategory = selected === "すべて" || rule.category === selected;
+        const text = rule.name + rule.answer + rule.detail + rule.tip;
+        const matchQuery = query === "" || text.includes(query);
+        const matchTag = selectedTag === "" || (rule.tags && rule.tags.includes(selectedTag));
+        return matchCategory && matchQuery && matchTag;
+      });
+
+      React.useEffect(() => {
+        setVisibleCount(10);
+      }, [query, selectedTag, selected]);
+
+      const visibleRules = filtered.slice(0, visibleCount);
+
+      return (
+        <div>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="ルールを検索..."
+            className="search"
+          />
+          <div className="categories">
+            {categories.map(cat => (
+              <button key={cat}
+                className={selected === cat ? "active" : ""}
+                onClick={() => setSelected(cat)}>{cat}</button>
+            ))}
+          </div>
+          <div className="tags">
+            {tagsList.map(tag => (
+              <button key={tag}
+                className={selectedTag === tag ? "active" : ""}
+                onClick={() => setSelectedTag(tag)}>{tag}</button>
+            ))}
+            <button onClick={() => setSelectedTag("")}>リセット</button>
+          </div>
+          {(selectedTag || query) && (
+            <div className="search-condition">
+              🔍 検索条件: 
+              {selectedTag && <span> {selectedTag} </span>}
+              {selectedTag && query && "＋"}
+              {query && <span> {query} </span>}
+            </div>
+          )}
+          <ul>
+            {visibleRules.length === 0 ? (
+              <li className="no-results">❌ 該当するルールが見つかりません。</li>
+            ) : (
+              visibleRules.map(rule => (
+                <li key={rule.id}>
+                  <a href={"rule-detail.html?id=" + rule.id}>
+                    {rule.image && rule.image !== "" && (
+                      <img src={rule.image} alt={rule.name} className="thumb" />
+                    )}
+                    <div className="text">
+                      <div>{highlightText(rule.name, query)}</div>
+                      {query && (
+                        <div className="excerpt">
+                          {highlightText(rule.detail, query)}
+                        </div>
+                      )}
+                    </div>
+                  </a>
+                </li>
+              ))
+            )}
+          </ul>
+          {visibleCount < filtered.length && (
+            <div className="loading">読み込み中...</div>
+          )}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Rules />);
+  </script>
+
+    <script>
+    (function(){
+      function getParam(k){ return new URLSearchParams(location.search).get(k); }
+      const cat = getParam('cat');
+      const q = getParam('q');
+      // Wait for rules to be loaded if page builds list dynamically
+      function run(){
+        try{
+          if(cat){
+            const btn = document.querySelector('[data-category="'+cat+'"]');
+            if(btn){ btn.click(); return; }
+          }
+          if(q && typeof window.searchRules === 'function'){
+            window.searchRules(q);
+          }
+        }catch(e){}
+      }
+      if(document.readyState === 'complete') run();
+      else window.addEventListener('load', run);
+    })();
+    </script>
+    
 </body>
 </html>
