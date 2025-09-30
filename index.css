@@ -2,78 +2,54 @@
 body {
   font-family: sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
   background: #fff;
 }
-
-.header {
-  background: #2a9d47;
-  color: white;
-  text-align: center;
-  padding: 10px;
-}
-
-h2 {
-  font-size: 1.2em;
-  margin: 15px 10px 5px;
-}
-
-.search-box {
+.search-container {
   display: flex;
-  gap: 5px;
-  padding: 0 10px;
+  margin: 10px 0;
 }
-
-.search-box input {
+.search-container input {
   flex: 1;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
 }
-
-.search-box button {
-  padding: 8px;
+.search-container button {
+  padding: 10px;
+  background: #dff5e0;
   border: none;
-  background: #eaf8ec;
-  border-radius: 5px;
 }
-
+h2 {
+  font-size: 18px;
+  margin-top: 20px;
+}
 .button-grid {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  padding: 10px;
+  margin: 10px 0;
 }
-
-.grid-5 {
-  grid-template-columns: repeat(5, 1fr);
-}
-
 .button-grid button {
-  padding: 10px;
-  background: #eaf8ec;
+  padding: 15px 0;
+  background: #e6f5ec;
   border: none;
+  font-size: 16px;
   border-radius: 8px;
-  font-size: 0.9em;
 }
-
-.fav-btn {
-  display: block;
-  width: calc(100% - 20px);
-  margin: 10px auto;
-  padding: 12px;
+.card {
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+.yellow-card {
   background: #fff3c4;
-  border: 1px solid #e6d96f;
-  border-radius: 8px;
-  font-size: 1em;
 }
-
-.list-btn {
-  display: block;
-  width: calc(100% - 20px);
-  margin: 10px auto;
-  padding: 12px;
-  background: #f6f6f6;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1em;
+.gray-card {
+  background: #f3f3f3;
+}
+.card a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
