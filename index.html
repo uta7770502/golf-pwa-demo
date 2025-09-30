@@ -7,59 +7,69 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <header class="header">ゴルフルール</header>
+  <header class="header">
+    <h1>ゴルフルール</h1>
+  </header>
 
-  <!-- ルール一覧ボタンを検索ボックス上に移動 -->
-  <div class="card yellow">
-    <span class="icon">📄</span> <a href="rules.html">ルール一覧（2025 最新ver.）</a>
-  </div>
+  <main>
+    <!-- 検索 -->
+    <section class="search-section">
+      <h2>ルールを検索</h2>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="キーワードで検索（例：OB、バンカー）">
+        <button id="voiceSearch">🎤</button>
+      </div>
+      <ul id="suggestions"></ul>
+    </section>
 
-  <!-- 検索ボックス -->
-  <div class="search-box">
-    <input type="text" placeholder="キーワードで検索（例：OB、バンカー）">
-    <button class="mic-btn">🎤</button>
-  </div>
+    <!-- 人気のキーワード -->
+    <section>
+      <h2>人気のキーワード</h2>
+      <div class="button-grid grid-5">
+        <button>OB</button>
+        <button>バンカー</button>
+        <button>暫定球</button>
+        <button>ロストボール</button>
+        <button>杭</button>
+      </div>
+    </section>
 
-  <section>
-    <h2>人気のキーワード</h2>
-    <div class="button-grid">
-      <button>OB</button>
-      <button>バンカー</button>
-      <button>暫定球</button>
-      <button>ロストボール</button>
-      <button>杭</button>
-    </div>
-  </section>
+    <!-- 場所で探す -->
+    <section>
+      <h2>場所で探す</h2>
+      <div class="button-grid grid-5">
+        <button>ティー</button>
+        <button>フェアウェイ</button>
+        <button>ラフ</button>
+        <button>グリーン</button>
+        <button>バンカー</button>
+      </div>
+    </section>
 
-  <section>
-    <h2>場所で探す</h2>
-    <div class="button-grid">
-      <button>ティー</button>
-      <button>フェアウェイ</button>
-      <button>ラフ</button>
-      <button>グリーン</button>
-      <button>バンカー</button>
-    </div>
-  </section>
+    <!-- 種類から探す -->
+    <section>
+      <h2>種類から探す</h2>
+      <div class="button-grid grid-5">
+        <button>OB</button>
+        <button>ペナルティ</button>
+        <button>プレー順</button>
+        <button>道具</button>
+        <button>カート</button>
+      </div>
+    </section>
 
-  <section>
-    <h2>種類から探す</h2>
-    <div class="button-grid">
-      <button>OB</button>
-      <button>ペナルティ</button>
-      <button>プレー順</button>
-      <button>道具</button>
-      <button>カート</button>
-    </div>
-  </section>
+    <!-- お気に入り -->
+    <section>
+      <h2>⭐ お気に入り</h2>
+      <button class="fav-btn">お気に入りルール一覧へ</button>
+    </section>
 
-  <!-- お気に入りボタンをカード型に -->
-  <section>
-    <h2>⭐ お気に入り</h2>
-    <div class="card yellow">
-      <a href="favorites.html">お気に入りルール一覧へ</a>
-    </div>
-  </section>
+    <!-- ルール一覧 -->
+    <section>
+      <button class="list-btn">📄 ルール一覧（2025 最新ver.）</button>
+    </section>
+  </main>
 
+  <script src="index.js"></script>
 </body>
 </html>
