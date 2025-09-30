@@ -44,7 +44,17 @@
       text-decoration: none;
       color: #000;
     }
-  </style>
+  
+/* === Mobile: enlarge green category buttons ~2.5x === */
+@media (max-width: 600px) {
+  .btn-grid a {
+    font-size: 22px;      /* ~14px * 1.58 => 22px */
+    padding: 16px 22px;   /* ~10px*1.6, 14px*1.6 */
+    border-radius: 12px;
+  }
+}
+
+</style>
 <style>
 .keyword-buttons {
   display: grid;
