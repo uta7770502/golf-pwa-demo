@@ -1,1 +1,106 @@
-<!DOCTYPE html><html lang='ja'><head><meta charset='utf-8'><title>お気に入り</title></head><body><h1>お気に入り一覧ページ</h1></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>お気に入りルール一覧</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding:1rem; }
+    header { background: #16a34a; color: white; padding: 1rem; text-align: center; font-weight: bold; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { padding: 1rem; border-bottom: 1px solid #ddd; display:flex; align-items:center; gap:0.5rem; }
+    li a { text-decoration: none; color: #16a34a; font-weight: bold; display:flex; align-items:center; gap:0.5rem; flex:1; }
+    .thumb { width:40px; height:40px; object-fit:cover; border-radius:0.3rem; flex-shrink:0; }
+    button { background:#facc15; border:none; padding:0.5rem 1rem; border-radius:0.5rem; cursor:pointer; }
+    button:hover { background:#eab308; }
+    .controls { margin:1rem 0; }
+    a.back { display:block; margin:1rem 0; color:#16a34a; }
+  </style>
+</head>
+<body>
+  <header>⭐ お気に入りルール</header>
+  <div id="root"></div>
+  <a class="back" href="index.html">← トップへ戻る</a>
+
+  <script type="text/babel">
+    function Favorites() {
+      const [favorites, setFavorites] = React.useState([]);
+      const [rules, setRules] = React.useState([]);
+      const [sort, setSort] = React.useState(localStorage.getItem("favoritesSort") || "added");
+      const [query, setQuery] = React.useState("");
+
+      React.useEffect(() => {
+        fetch("rules.json")
+          .then(res => res.json())
+          .then(data => setRules(data));
+
+        const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+        setFavorites(favs);
+      }, []);
+
+      function removeFavorite(id) {
+        const newFavs = favorites.filter(f => f !== id);
+        setFavorites(newFavs);
+        localStorage.setItem("favorites", JSON.stringify(newFavs));
+      }
+
+      const favoriteRules = rules.filter(r => favorites.includes(r.id));
+
+      let sorted = [...favoriteRules];
+      if (sort === "name") {
+        sorted.sort((a, b) => a.name.localeCompare(b.name, "ja"));
+      }
+
+      const filtered = sorted.filter(rule =>
+        query === "" ||
+        rule.name.includes(query) ||
+        rule.detail.includes(query) ||
+        rule.tip.includes(query)
+      );
+
+      return (
+        <div>
+          <div className="controls">
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="お気に入り検索..."
+            />
+            <button onClick={() => {
+              const next = sort === "added" ? "name" : "added";
+              setSort(next);
+              localStorage.setItem("favoritesSort", next);
+            }}>
+              並び替え: {sort === "added" ? "追加順" : "名前順"}
+            </button>
+          </div>
+          <ul>
+            {filtered.length === 0 ? (
+              <li>⭐ お気に入りはまだありません</li>
+            ) : (
+              filtered.map(rule => (
+                <li key={rule.id}>
+                  <a href={"rule-detail.html?id=" + rule.id}>
+                    {rule.image && rule.image !== "" && (
+                      <img src={rule.image} alt={rule.name} className="thumb" />
+                    )}
+                    <span>{rule.name}</span>
+                  </a>
+                  <button onClick={() => removeFavorite(rule.id)}>⭐解除</button>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Favorites />);
+  </script>
+</body>
+</html>
