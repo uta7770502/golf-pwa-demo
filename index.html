@@ -54,6 +54,34 @@
   }
 }
 
+
+/* === 3列固定・幅統一 === */
+.pill-section {
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+.pill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.pill-grid a, .pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 76px;
+  padding: 10px 8px;
+  font-size: 22px;
+  border-radius: 12px;
+  background: #f0f9f5;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-weight: 700;
+}
+
 </style>
 <style>
 .keyword-buttons {
