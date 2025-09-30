@@ -85,16 +85,16 @@
 
     <script>
       const keywords = [
-        {name:"OB", icon:"🚫"},
-        {name:"赤杭", icon:"🔴"},
-        {name:"黄杭", icon:"🟡"},
-        {name:"青杭", icon:"🔵"},
-        {name:"ロストボール", icon:"🔍"},
-        {name:"暫定球", icon:"⛳"},
-        {name:"誤球", icon:"❌"},
-        {name:"グリーンマーク", icon:"📍"},
-        {name:"バンカー", icon:"🏖️"},
-        {name:"ティー", icon:"🎯"}
+        {name:"OB", icon:""},
+        {name:"赤杭", icon:""},
+        {name:"黄杭", icon:""},
+        {name:"青杭", icon:""},
+        {name:"ロストボール", icon:""},
+        {name:"暫定球", icon:""},
+        {name:"誤球", icon:""},
+        {name:"グリーンマーク", icon:""},
+        {name:"バンカー", icon:""},
+        {name:"ティー", icon:""}
       ];
 
       function getCount(key){
@@ -125,7 +125,6 @@
     </script>
     
         
-    <header>ゴルフルール</header>
     <div id="root"></div>
 
     <script type="text/babel">
@@ -157,7 +156,7 @@
           <main style={{ padding: "1rem" }}>
             <a href="rules.html">
               <button className="card yellow" style={{ marginBottom: "1rem", fontWeight: "bold" }}>
-                📑 ルール一覧（2025 最新ver.）
+                ルール一覧（2025 最新ver.）
               </button>
             </a>
 
@@ -188,7 +187,7 @@
             </section>
 
             <section style={{ marginTop: "1.5rem" }}>
-              <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>🌱 場所で探す</h2>
+              <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>場所で探す</h2>
               <div className="grid">
                 <a href="rules.html"><button className="card green">ティー</button></a>
                 <a href="rules.html"><button className="card green">フェアウェイ</button></a>
@@ -199,17 +198,13 @@
             </section>
 
             <section style={{ marginTop: "1.5rem" }}>
-              <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>📂 種類から探す</h2>
+              <h2 style={{ fontWeight: "bold", marginBottom: "0.5rem" }}>種類から探す</h2>
               <div className="grid">
                 <a href="rules.html"><button className="card yellow">OB</button></a>
                 <a href="rules.html"><button className="card yellow">ペナルティ</button></a>
                 <a href="rules.html"><button className="card yellow">プレー順</button></a>
                 <a href="rules.html"><button className="card yellow">道具の扱い</button></a>
               </div>
-            </section>
-
-            <section style={{ marginTop: "1.5rem" }}>
-              <a href="favorites.html">⭐ お気に入りルールへ</a>
             </section>
           </main>
         );
@@ -236,14 +231,14 @@ document.querySelectorAll('.filter-section button').forEach(btn => {
     <section id="quick-access" class="home-block">
       <h2>すぐ探す</h2>
       <div class="quick-grid">
-        <a class="quick-btn ob" href="rules.html?cat=OB">🚫 OB</a>
-        <a class="quick-btn bunker" href="rules.html?cat=バンカー">🏖️ バンカー</a>
-        <a class="quick-btn green" href="rules.html?cat=グリーン">🟩 グリーン</a>
-        <a class="quick-btn stakes" href="rules.html?cat=杭">📍 杭</a>
-        <a class="quick-btn provisional" href="rules.html?cat=暫定球">⛳ 暫定球</a>
-        <a class="quick-btn wrong" href="rules.html?cat=誤球">❌ 誤球</a>
-        <a class="quick-btn lost" href="rules.html?cat=ロストボール">🔍 ロスト</a>
-        <a class="quick-btn manner" href="rules.html?cat=マナー">🙏 マナー</a>
+        <a class="quick-btn ob" href="rules.html?cat=OB">OB</a>
+        <a class="quick-btn bunker" href="rules.html?cat=バンカー">バンカー</a>
+        <a class="quick-btn green" href="rules.html?cat=グリーン">グリーン</a>
+        <a class="quick-btn stakes" href="rules.html?cat=杭">杭</a>
+        <a class="quick-btn provisional" href="rules.html?cat=暫定球">暫定球</a>
+        <a class="quick-btn wrong" href="rules.html?cat=誤球">誤球</a>
+        <a class="quick-btn lost" href="rules.html?cat=ロストボール">ロスト</a>
+        <a class="quick-btn manner" href="rules.html?cat=マナー">マナー</a>
       </div>
     </section>
 
