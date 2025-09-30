@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>スイスイ楽々ゴルフルール</title>
+  <title>ゴルフルール</title>
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <header class="header">ゴルフルール</header>
+  <header class="header">
+    <h1>ゴルフルール</h1>
+  </header>
 
   <main>
+    <!-- 検索 -->
     <section class="search-section">
       <h2>ルールを検索</h2>
       <div class="search-box">
-        <input type="text" placeholder="キーワードで検索（例：OB、バンカー）">
-        <button class="mic-btn">🎤</button>
+        <input type="text" id="searchInput" placeholder="キーワードで検索（例：OB、バンカー）">
+        <button id="voiceSearch">🎤</button>
       </div>
+      <ul id="suggestions"></ul>
     </section>
 
-    <section class="keyword-section">
+    <!-- 人気のキーワード -->
+    <section>
       <h2>人気のキーワード</h2>
-      <div class="button-grid">
+      <div class="button-grid grid-5">
         <button>OB</button>
         <button>バンカー</button>
         <button>暫定球</button>
@@ -29,9 +34,10 @@
       </div>
     </section>
 
-    <section class="place-section">
+    <!-- 場所で探す -->
+    <section>
       <h2>場所で探す</h2>
-      <div class="button-grid">
+      <div class="button-grid grid-5">
         <button>ティー</button>
         <button>フェアウェイ</button>
         <button>ラフ</button>
@@ -40,9 +46,10 @@
       </div>
     </section>
 
-    <section class="type-section">
+    <!-- 種類から探す -->
+    <section>
       <h2>種類から探す</h2>
-      <div class="button-grid">
+      <div class="button-grid grid-5">
         <button>OB</button>
         <button>ペナルティ</button>
         <button>プレー順</button>
@@ -50,6 +57,19 @@
         <button>カート</button>
       </div>
     </section>
+
+    <!-- お気に入り -->
+    <section>
+      <h2>⭐ お気に入り</h2>
+      <button class="fav-btn">お気に入りルール一覧へ</button>
+    </section>
+
+    <!-- ルール一覧 -->
+    <section>
+      <button class="list-btn">📄 ルール一覧（2025 最新ver.）</button>
+    </section>
   </main>
+
+  <script src="index.js"></script>
 </body>
 </html>
